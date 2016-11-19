@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 19:07:30 by bbeldame          #+#    #+#             */
-/*   Updated: 2016/11/16 22:46:18 by bbeldame         ###   ########.fr       */
+/*   Updated: 2016/11/19 19:57:56 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,11 @@ int		main(void)
 	fd = open("file.txt", O_RDONLY);
 	if (fd == -1)
 		return (0);
-
-	if (get_next_line(fd, &str))
+	while (get_next_line(fd, &str))
 	{
-		ft_putchar('\n');
 		ft_putstr(str);
 		ft_putchar('\n');
 	}
-
 	if (close(fd) == -1)
 		ft_putstr("Close() failed\n");
 	return (1);
