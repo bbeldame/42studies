@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 19:10:54 by bbeldame          #+#    #+#             */
-/*   Updated: 2016/11/20 21:15:41 by bbeldame         ###   ########.fr       */
+/*   Updated: 2016/11/20 22:25:25 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,20 @@ int		get_next_line(const int fd, char **line)
 			return (-1);
 	while (contains_stop(str) == -1 && ret)
 	{
-		ret = read(fd, buffer, BUFF_SIZE);
+		if ((ret = read(fd, buffer, BUFF_SIZE)) == -1)
+			return (-1);
 		buffer[ret] = '\0';
 		str = ft_strjoin(str, buffer);
 	}
 	if (!ret && contains_stop(str) == -1)
-		return (0);
+		if (!ft_strlen(str))
+			return (0);
 	if (!(newline = (char *)malloc(sizeof(char) * contains_stop(str))))
 		return (-1);
 	ft_strncpy(newline, str, contains_stop(str));
 	str_minus(str, contains_stop(str), ft_strlen(str));
 	if (!(*line = (char *)malloc(sizeof(char) * (ft_strlen(newline) + 1))))
 		return (-1);
-	ft_strcpy(*line, newline);
+	ft_strncpy(*line, newline, ft_strlen(newline));
 	return (1);
 }
