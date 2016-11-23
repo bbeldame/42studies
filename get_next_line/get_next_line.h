@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 19:08:31 by bbeldame          #+#    #+#             */
-/*   Updated: 2016/11/20 21:13:41 by bbeldame         ###   ########.fr       */
+/*   Updated: 2016/11/23 18:53:29 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,13 @@
 # include "libft/libft.h"
 
 # define BUFF_SIZE 5000
+
+typedef struct		s_cont
+{
+	int				fd;
+	char			*content;
+	struct s_list	*next;
+}					t_cont;
 
 int		get_next_line(const int fd, char **line);
 
