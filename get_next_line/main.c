@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 19:07:30 by bbeldame          #+#    #+#             */
-/*   Updated: 2016/11/23 18:52:36 by bbeldame         ###   ########.fr       */
+/*   Updated: 2016/11/23 19:40:43 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		main(void)
 {
 	int		fd;
 	char	*str;
-	char	*str2;
+//	char	*str2;
 	int		i;
 
 	fd = open("file.txt", O_RDONLY);
@@ -34,7 +34,7 @@ int		main(void)
 	if (close(fd) == -1)
 		ft_putstr("Close() failed\n");
 	printf("\n Go sur le fichier 2 :\n");
-	fd = open("file2.txt", O_RDONLY);
+/*	fd = open("file2.txt", O_RDONLY);
 	if (fd == -1)
 		return (0);
 	i = 0;
@@ -46,5 +46,5 @@ int		main(void)
 	}
 	if (close(fd) == -1)
 		ft_putstr("Close() failed\n");
-	return (1);
+*/	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 19:10:54 by bbeldame          #+#    #+#             */
-/*   Updated: 2016/11/20 22:25:25 by bbeldame         ###   ########.fr       */
+/*   Updated: 2016/11/23 19:41:23 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,6 @@ int		get_next_line(const int fd, char **line)
 	if (!(*line = (char *)malloc(sizeof(char) * (ft_strlen(newline) + 1))))
 		return (-1);
 	ft_strncpy(*line, newline, ft_strlen(newline));
+	free(newline);
 	return (1);
 }
