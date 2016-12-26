@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 19:08:31 by bbeldame          #+#    #+#             */
-/*   Updated: 2016/11/23 18:53:29 by bbeldame         ###   ########.fr       */
+/*   Updated: 2016/12/26 20:05:12 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@
 
 typedef struct		s_cont
 {
+	struct s_cont	*before;
 	int				fd;
-	char			*content;
-	struct s_list	*next;
+	char			*ctt;
+	struct s_cont	*next;
 }					t_cont;
 
 int		get_next_line(const int fd, char **line);
