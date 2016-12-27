@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 19:07:30 by bbeldame          #+#    #+#             */
-/*   Updated: 2016/11/23 19:40:43 by bbeldame         ###   ########.fr       */
+/*   Updated: 2016/12/27 23:02:16 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,12 @@ int		main(void)
 {
 	int		fd;
 	char	*str;
-//	char	*str2;
 	int		i;
 
-	fd = open("file.txt", O_RDONLY);
+	i = 0;
+	fd = open("file1.txt", O_RDONLY);
 	if (fd == -1)
 		return (0);
-	i = 0;
 	while (get_next_line(fd, &str))
 	{
 		i++;
@@ -33,18 +32,6 @@ int		main(void)
 	}
 	if (close(fd) == -1)
 		ft_putstr("Close() failed\n");
-	printf("\n Go sur le fichier 2 :\n");
-/*	fd = open("file2.txt", O_RDONLY);
-	if (fd == -1)
-		return (0);
-	i = 0;
-	while (get_next_line(fd, &str2))
-	{
-		i++;
-		ft_putstr(str2);
-		ft_putchar('\n');
-	}
-	if (close(fd) == -1)
-		ft_putstr("Close() failed\n");
-*/	return (1);
+	printf("GNL returned 1 %d time(s)\n", i);
+	return (1);
 }
