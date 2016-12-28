@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 19:10:54 by bbeldame          #+#    #+#             */
-/*   Updated: 2016/12/28 20:44:55 by bbeldame         ###   ########.fr       */
+/*   Updated: 2016/12/28 20:22:31 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ char	*delcttfromstr(char *str, int index)
 	return (new);
 }
 
-t_cont	*getlist(t_cont *fst, int fd)
+char	*getlist(t_cont **fst, int fd)
 {
 	t_cont	*tmp;
 
-	tmp = fst;
+	tmp = *fst;
 	if (!tmp)
 	{
 //		printf("If 29\n");
@@ -35,15 +35,20 @@ t_cont	*getlist(t_cont *fst, int fd)
 		tmp->fd = fd;
 		tmp->ctt = "\0";
 		tmp->next = NULL;
-		return (tmp);
+		*fst = tmp;
+		return (tmp->ctt);
 	}
 	else
 	{
 //		printf("Else 34\n");
 		while (tmp)
 		{
+//			printf("tmp->ctt = %s\n, tmp->fd = %d\n", tmp->ctt, tmp->fd);
 			if (tmp->fd == fd)
-				return (tmp);
+			{
+//				printf("On retourne le ct\n");
+				return (tmp->ctt);
+			}
 			tmp = tmp->next;
 		}
 		tmp = (t_cont *)malloc(sizeof(t_cont));
@@ -51,7 +56,7 @@ t_cont	*getlist(t_cont *fst, int fd)
 		tmp->ctt = "\0";
 		tmp->next = NULL;
 	}
-	return (tmp);
+	return (tmp->ctt);
 }
 
 int		contains_stop(const char *str)
@@ -91,18 +96,19 @@ int		get_next_line(const int fd, char **line)
 	int				ret;
 	char			*newline;
 	static t_cont	*lst;
+	char			*str;
 
 	ret = 1;
 //	ft_putstr("\n\n\n-----------Rentre dans gnl-------------\n");
-	lst = getlist(lst, fd);
-//	printf("Lst->ctt 74 = %s\n", lst->ctt);
-//	printf("Lst->fd = %d\n", lst->fd);
+	str = getlist(&lst, fd);
+//	printf("Lst->ctt 74 = %s\n", str);
 	if (!line)
 		return (-1);
-	if (!lst->ctt)
-		if (!(lst->ctt = (char *)malloc(sizeof(char) * BUFF_SIZE)))
+	if (!str)
+		if (!(str = (char *)malloc(sizeof(char) * BUFF_SIZE)))
 			return (-1);
-	while (contains_stop(lst->ctt) == -1 && ret)
+//	ft_putstr("cc\n");
+	while (contains_stop(str) == -1 && ret)
 	{
 //		printf("On est la 97\n");
 		if ((ret = read(fd, buffer, BUFF_SIZE)) == -1)
@@ -111,24 +117,24 @@ int		get_next_line(const int fd, char **line)
 //		printf("buffer = %s\n", buffer);
 		buffer[ret] = '\0';
 //		printf("Buffer = %s\n", buffer);
-		lst->ctt = ft_strjoin(lst->ctt, buffer);
+		str = ft_strjoin(str, buffer);
 	}
 //	printf("ret = %d\n", ret);
 //	ret = isfinish(ret, fd, lst->ctt);
 //	printf("ret = %d\n", ret);
-//	printf("   ---   \nLine 83, ctt = \n%s\n   ---   \n", lst->ctt);
-	if (!ret && contains_stop(lst->ctt) == -1)
+//	printf("   ---   \nLine 83, ctt = \n%s\n   ---   \n", str);
+	if (!ret && contains_stop(str) == -1)
 	{
 //		printf("Ici\n");
-		if (!ft_strlen(lst->ctt))
+		if (!ft_strlen(str))
 		{
 			return (0);
 		}
-		if (!(newline = (char *)malloc(sizeof(char) * ft_strlen(lst->ctt) + 1)))
+		if (!(newline = (char *)malloc(sizeof(char) * ft_strlen(str) + 1)))
 			return (-1);
 //		printf("Return de ft_strlen de lst->ctt 124 : %zu\n", ft_strlen(lst->ctt));
-		ft_strcpy(newline, lst->ctt);
-		lst->ctt = delcttfromstr(lst->ctt, ft_strlen(lst->ctt));
+		ft_strcpy(newline, str);
+		str = delcttfromstr(str, ft_strlen(str));
 		if (!(*line = (char *)malloc(sizeof(char) * (ft_strlen(newline) + 1))))
 			return (-1);
 //		ft_putstr("-- NEWLINE = ");
@@ -141,18 +147,19 @@ int		get_next_line(const int fd, char **line)
 	else
 	{
 //		ft_putstr("J'ai pas retourne 0\n");
-		if (!(newline = (char *)malloc(sizeof(char) * contains_stop(lst->ctt) + 1)))
+		if (!(newline = (char *)malloc(sizeof(char) * contains_stop(str) + 1)))
 			return (-1);
-		ft_strncpy(newline, lst->ctt, contains_stop(lst->ctt) + 1);
-		newline[contains_stop(lst->ctt)] = '\0';
+		ft_strncpy(newline, str, contains_stop(str) + 1);
+		newline[contains_stop(str)] = '\0';
 //		printf("Newline 95 = %s\n", newline);
 	//	la a la place de str minus je dois faire une fonction propre qui free et refait lst->ctt
-		lst->ctt = delcttfromstr(lst->ctt, contains_stop(lst->ctt));
+		str = delcttfromstr(str, contains_stop(str));
 		if (!(*line = (char *)malloc(sizeof(char) * (ft_strlen(newline) + 1))))
 			return (-1);
 //		printf("Newline 99 = %s\n   ---\n", newline);
 		ft_strcpy(*line, newline);
 		free(newline);
+//		printf("Normalement :\n %s\n et %s\n sont egaux", lst->ctt, str);
 //		printf("141 : %s\n", lst->ctt);
 	}
 	return (1);
