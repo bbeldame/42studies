@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 19:10:54 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/01/08 20:07:24 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/01/11 20:33:42 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,24 @@ int		cs(const char *str)
 	while (str[i])
 	{
 		if (str[i] == '\n' || !str[i])
-		{
 			return (i);
-		}
 		i++;
 	}
 	return (-1);
+}
+
+char	*dumpstr(char *str)
+{
+	char *new;
+
+	new = (char *)malloc(sizeof(char) * (ft_strlen(str) - cs(str)));
+	if (!new)
+		return (0);
+	new = ft_strncpy(new, str + cs(str) + 1, ft_strlen(str) - cs(str));
+	ft_bzero(str, ft_strlen(str));
+	free(str);
+	str = NULL;
+	return (new);
 }
 
 int		get_next_line(const int fd, char **line)
@@ -71,8 +83,7 @@ int		get_next_line(const int fd, char **line)
 			return (-1);
 		ft_strncpy(newline, str[fd], cs(str[fd]) + 1);
 		newline[cs(str[fd])] = '\0';
-		ft_memmove(str[fd], str[fd] + cs(str[fd]) + 1,
-			ft_strlen(str[fd] + cs(str[fd]) + 1) + 1);
+		str[fd] = dumpstr(str[fd]);
 		if (!(*line = (char *)malloc(sizeof(char) * (ft_strlen(newline) + 1))))
 			return (-1);
 		ft_strcpy(*line, newline);

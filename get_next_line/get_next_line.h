@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 19:08:31 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/01/08 19:57:07 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/01/11 20:30:02 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <unistd.h>
 # include "libft/libft.h"
 
-# define BUFF_SIZE	1
+# define BUFF_SIZE	5
 # define NBMAXFD	9000
 
 typedef struct		s_cont
@@ -29,6 +29,6 @@ typedef struct		s_cont
 	char			*ctt;
 }					t_cont;
 
-int		get_next_line(const int fd, char **line);
+int					get_next_line(const int fd, char **line);
 
 #endif
