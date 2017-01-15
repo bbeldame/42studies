@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 19:07:30 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/01/11 20:33:41 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/01/15 18:39:56 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,27 @@ int		main(void)
 	int		i;
 
 	i = 0;
-	fd1 = open("file.txt", O_RDONLY);
+	fd1 = open("file1.txt", O_RDONLY);
 	fd2 = open("file2.txt", O_RDONLY);
 	if (fd1 == -1)
 		return (0);
-	get_next_line(fd1, &str);
-		ft_putstr(str);
-		ft_putchar('\n');
-	}
-	if (close(fd1) == -1)
-		ft_putstr("Close() failed\n");
+	ft_putnbr(get_next_line(fd1, &str));
+	ft_putstr("fd1 1 =\n");
+	ft_putstr(str);
+	ft_putchar('\n');
+	ft_putnbr(get_next_line(fd2, &str));
+	ft_putstr("fd2 1 =\n");
+	ft_putstr(str);
+	ft_putchar('\n');
+	ft_putnbr(get_next_line(fd1, &str));
+	ft_putstr("fd1 2 =\n");
+	ft_putstr(str);
+	ft_putchar('\n');
+	ft_putnbr(get_next_line(fd2, &str));
+	ft_putstr("fd2 2 =\n");
+	ft_putstr(str);
+	ft_putchar('\n');
+	close(fd1);
+	close(fd2);
 	return (1);
 }
