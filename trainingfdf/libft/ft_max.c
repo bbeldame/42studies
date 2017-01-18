@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprime.c                                       :+:      :+:    :+:   */
+/*   ft_max.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 17:06:01 by ocojeda-          #+#    #+#             */
-/*   Updated: 2016/11/24 17:55:39 by ocojeda-         ###   ########.fr       */
+/*   Created: 2016/11/14 19:23:51 by bbeldame          #+#    #+#             */
+/*   Updated: 2016/11/14 19:46:40 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isprime(int nbr)
+int		ft_max(const int *tab, size_t len)
 {
-	int i;
+	int		max;
+	size_t	i;
 
-	i = 2;
-	if (!nbr)
-		return (0);
-	while (i < nbr)
+	max = tab[0];
+	i = 0;
+	while (i < len)
 	{
-		if (nbr % i == 0)
-			return (0);
+		if (tab[i] > max)
+			max = tab[i];
 		i++;
 	}
-	return (1);
+	return (max);
 }

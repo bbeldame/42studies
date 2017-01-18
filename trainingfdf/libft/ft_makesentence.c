@@ -1,29 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmap.c                                        :+:      :+:    :+:   */
+/*   ft_makesentence.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/10 19:26:58 by bbeldame          #+#    #+#             */
-/*   Updated: 2016/11/13 18:18:17 by bbeldame         ###   ########.fr       */
+/*   Created: 2016/11/14 21:01:51 by bbeldame          #+#    #+#             */
+/*   Updated: 2016/11/14 21:23:04 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmap(char const *s, char (*f)(char))
+char	*ft_makesentence(const char *str)
 {
-	char			*new;
-	unsigned int	i;
+	char	*new;
+	int		dot;
 
-	i = 0;
-	if (!s || !f)
+	if (!str)
 		return (NULL);
-	if (!(new = (char *)malloc(sizeof(char) * ft_strlen(s) + 1)))
+	dot = 1;
+	if (str[ft_strlen(str) - 1] == '.' || str[ft_strlen(str) - 1] == '!'
+			|| str[ft_strlen(str) - 1] == '?')
+		dot = 0;
+	if (!(new = (char *)malloc(sizeof(char) * (ft_strlen(str) + dot + 1))))
 		return (NULL);
-	while (*s)
-		new[i++] = f(*s++);
-	new[i] = '\0';
+	new = ft_strcpy(new, str);
+	new[0] = ft_toupper(new[0]);
+	if (dot == 0)
+		new[ft_strlen(str)] = '\0';
+	else
+	{
+		new[ft_strlen(str)] = '.';
+		new[ft_strlen(str) + 1] = '\0';
+	}
 	return (new);
 }

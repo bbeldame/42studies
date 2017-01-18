@@ -3,38 +3,48 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/20 18:06:03 by ocojeda-          #+#    #+#             */
-/*   Updated: 2016/11/22 09:49:35 by ocojeda-         ###   ########.fr       */
+/*   Created: 2016/11/11 18:49:35 by bbeldame          #+#    #+#             */
+/*   Updated: 2016/11/13 18:28:36 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list*))
+static void		clean(t_list *todel)
 {
-	t_list	*result;
-	t_list	*tmp;
-	t_list	*tmp2;
+	t_list *tmp;
+
+	while (todel)
+	{
+		tmp = todel->next;
+		ft_memdel((void **)&todel);
+		todel = tmp;
+	}
+}
+
+t_list			*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+{
+	t_list *new;
+	t_list *fst;
 
 	if (!lst || !f)
 		return (NULL);
-	tmp2 = f(lst);
-	result = ft_lstnew(tmp2->content, tmp2->content_size);
-	if (result)
+	if (!(new = ft_lstnew(lst->content, lst->content_size)))
+		return (NULL);
+	new = f(new);
+	fst = new;
+	while (lst->next)
 	{
-		tmp = result;
 		lst = lst->next;
-		while (lst)
+		if (!(new->next = ft_lstnew(lst->content, lst->content_size)))
 		{
-			tmp2 = f(lst);
-			tmp->next = ft_lstnew(tmp2->content, tmp2->content_size);
-			if (tmp->next == NULL)
-				return (NULL);
-			tmp = tmp->next;
-			lst = lst->next;
+			clean(fst);
+			return (NULL);
 		}
+		new->next = f(new->next);
+		new = new->next;
 	}
-	return (result);
+	return (fst);
 }

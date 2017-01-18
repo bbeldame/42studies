@@ -3,65 +3,62 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/19 12:35:35 by ocojeda-          #+#    #+#             */
-/*   Updated: 2016/11/24 17:51:14 by ocojeda-         ###   ########.fr       */
+/*   Created: 2016/11/09 20:56:27 by bbeldame          #+#    #+#             */
+/*   Updated: 2016/11/13 21:20:47 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int					ft_isneg(int *negflag, int *n, int *total)
+static int	digitscount(int n)
 {
-	*total = *n;
-	if (*n < 0)
+	int				size;
+	unsigned int	nb;
+
+	size = 0;
+	if (n < 0)
 	{
-		*n = *n * -1;
-		*negflag = 1;
-		return (0);
+		nb = -n;
+		size++;
 	}
-	*negflag = 0;
-	return (1);
+	else
+		nb = n;
+	while (nb > 9)
+	{
+		nb = nb / 10;
+		size++;
+	}
+	size++;
+	return (size);
 }
 
-static char					*ft_choose(int n)
+char		*ft_itoa(int n)
 {
-	char	*temp;
+	char			*str;
+	int				i;
+	unsigned int	nb;
+	int				minus;
 
-	if (n == -2147483648)
-	{
-		temp = "-2147483648";
-		return (temp);
-	}
-	temp = "0";
-	return (temp);
-}
-
-char						*ft_itoa(int n)
-{
-	int		total;
-	int		lenght;
-	char	*str;
-	int		negflag;
-
-	if (n == -2147483648 || n == 0)
-		return (ft_strdup(ft_choose(n)));
-	lenght = 2 - ft_isneg(&negflag, &n, &total);
-	while (total)
-	{
-		lenght++;
-		total = total / 10;
-	}
-	if ((str = (char *)malloc(sizeof(char) * lenght)) == NULL)
+	minus = 0;
+	if (!(str = (char *)malloc(sizeof(char) * digitscount(n) + 1)))
 		return (NULL);
-	str[--lenght] = '\0';
-	while (lenght--)
+	i = digitscount(n);
+	if (n < 0)
 	{
-		str[lenght] = n % 10 + '0';
-		n = n / 10;
+		minus = 1;
+		nb = -n;
 	}
-	if (negflag)
-		str[0] = '-';
+	else
+		nb = n;
+	str[i--] = '\0';
+	while (nb >= 10)
+	{
+		str[i--] = 48 + nb % 10;
+		nb = nb / 10;
+	}
+	str[i--] = 48 + nb;
+	str[i] = (minus) ? '-' : str[i];
 	return (str);
 }

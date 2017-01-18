@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_int_max.c                                       :+:      :+:    :+:   */
+/*   ft_min.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/24 17:01:15 by ocojeda-          #+#    #+#             */
-/*   Updated: 2016/11/24 17:34:51 by ocojeda-         ###   ########.fr       */
+/*   Created: 2016/11/14 19:37:30 by bbeldame          #+#    #+#             */
+/*   Updated: 2016/11/14 19:47:54 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_int_max(int *tab)
+int		ft_min(const int *tab, size_t len)
 {
-	int i;
-	int a;
+	int		min;
+	size_t	i;
 
+	min = tab[0];
 	i = 0;
-	a = tab[i];
-	if (!tab)
-		return (0);
-	while (tab[i])
+	while (i < len)
 	{
-		if (a < tab[i])
-		{
-			a = tab[i];
-			i = 0;
-		}
+		if (tab[i] < min)
+			min = tab[i];
 		i++;
 	}
-	return (a);
+	return (min);
 }

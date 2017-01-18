@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/08 17:04:55 by ocojeda-          #+#    #+#             */
-/*   Updated: 2016/11/09 19:26:05 by ocojeda-         ###   ########.fr       */
+/*   Created: 2016/11/07 21:55:49 by bbeldame          #+#    #+#             */
+/*   Updated: 2016/11/07 22:01:25 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,5 @@
 
 char	*ft_strcpy(char *dst, const char *src)
 {
-	size_t i;
-
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dst[i] = src[i];
-		i++;
-	}
-	dst[i] = '\0';
-	return (dst);
+	return (ft_memcpy(dst, src, ft_strlen(src) + 1));
 }

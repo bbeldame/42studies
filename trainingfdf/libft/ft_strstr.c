@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/10 02:21:46 by ocojeda-          #+#    #+#             */
-/*   Updated: 2016/11/10 03:50:40 by ocojeda-         ###   ########.fr       */
+/*   Created: 2016/11/09 20:15:31 by bbeldame          #+#    #+#             */
+/*   Updated: 2016/11/09 20:49:43 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,19 @@
 
 char	*ft_strstr(const char *big, const char *little)
 {
-	int i;
-	int e;
-	int flag;
+	char	*b;
+	char	*l;
+	int		i;
 
+	b = (char *)big;
+	l = (char *)little;
 	i = 0;
-	flag = 0;
-	e = ft_strlen(little);
-	if (e == 0)
-		return ((char *)big);
-	while (big[i])
+	if (ft_strlen(little) < 1)
+		return (b);
+	while (b[i])
 	{
-		while (big[i + flag] == little[flag])
-		{
-			if (flag == e - 1)
-				return (char *)big + i;
-			flag++;
-		}
-		flag = 0;
+		if (ft_strncmp(b + i, little, ft_strlen(little)) == 0)
+			return (b + i);
 		i++;
 	}
 	return (NULL);

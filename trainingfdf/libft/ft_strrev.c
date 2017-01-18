@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ocojeda- <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/02 12:15:44 by ocojeda-          #+#    #+#             */
-/*   Updated: 2016/11/24 16:58:26 by ocojeda-         ###   ########.fr       */
+/*   Created: 2016/11/14 19:58:20 by bbeldame          #+#    #+#             */
+/*   Updated: 2016/11/14 20:59:50 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void				ft_swap(int *a, int *b)
+char		*ft_strrev(char *str)
 {
-	int swapp;
+	int		j;
+	int		i;
+	char	swap;
 
-	swapp = *a;
-	*a = *b;
-	*b = swapp;
+	if (!str)
+		return (NULL);
+	i = 0;
+	while (str[i])
+		i++;
+	i--;
+	j = 0;
+	while (i > j)
+	{
+		swap = str[j];
+		str[j] = str[i];
+		str[i] = swap;
+		i--;
+		j++;
+	}
+	return (str);
 }
