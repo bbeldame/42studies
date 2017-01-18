@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 19:08:39 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/01/08 19:21:09 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/01/18 21:12:40 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,6 @@ int					ft_min(const int *tab, size_t len);
 int					ft_recursive_power(int nb, int power);
 char				*ft_strrev(char *str);
 char				*ft_makesentence(const char *str);
+void				ft_swap(int *a, int *b);
 
 #endif
