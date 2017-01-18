@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   circle.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/01/15 20:00:22 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/01/15 20:00:24 by bbeldame         ###   ########.fr       */
+/*   Created: 2017/01/16 20:07:30 by bbeldame          #+#    #+#             */
+/*   Updated: 2017/01/16 20:08:01 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mlx.h"
+#ifndef _CIRCLE_H_
+# define _CIRCLE_H_
 
-int	main(void)
+# include "fdf.h"
+
+typedef struct		s_f_circle
 {
-	void *mlx;
-	void *win;
-	int  x;
-	int  y;
+	int					x;
+	int					y;
+	int					r;
+	int					color;
+}									t_f_circle;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 1920, 1080, "Ceci est un carré");
-	y = 300;
-	while (y <= 800)
-	{
-		x = 300;
-		while (x <= 800)
-		{
-			mlx_pixel_put(mlx, win, x, y, 0x00FFFFFF);
-			x++;
-		}
-		y++;
-	}
-	mlx_loop(mlx);
-	return (1);
-}
+void prnt_circle(t_env *env, t_f_circle *cr);
+t_f_circle *init_circle(int x, int y, int r, int color);
+
+#endif
