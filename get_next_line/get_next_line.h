@@ -13,7 +13,6 @@
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
-# include <stdio.h>
 # include <stdlib.h>
 # include <sys/types.h>
 # include <sys/uio.h>
@@ -22,12 +21,6 @@
 
 # define BUFF_SIZE	9
 # define NBMAXFD	9000
-
-typedef struct		s_cont
-{
-	int				fd;
-	char			*ctt;
-}					t_cont;
 
 int					get_next_line(const int fd, char **line);
 
