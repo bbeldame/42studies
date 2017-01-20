@@ -15,9 +15,11 @@
 // changement de cette fonction plus tard
 char		*getcolor(char *str)
 {
-	char *color;
-
-	if (!(color = (char *)malloc(sizeof(char) * ft_strlen(str) + 1)))
+	char	*color;
+	int	len;
+	
+	len = (!str) ? ft_strlen(BASE_COLOR) : ft_strlen(str);
+	if (!(color = (char *)malloc(sizeof(char) * len + 1)))
 		return (NULL);
 	if (!str)
 		return (BASE_COLOR);
