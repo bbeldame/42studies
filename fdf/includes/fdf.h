@@ -23,19 +23,23 @@
 
 # define BASE_COLOR "0x0000FF"
 
-typedef struct		s_pt
+typedef struct		s_map
 {
 	int					z;
 	char				*color;
-}									t_pt;
+}									t_map;
 
 typedef struct		s_env
 {
 	void				*win;
 	void				*mlx;
-	t_pt				**map;
+	t_map				***map;
 }					t_env;
 
 t_env		*initenv(int fd);
+int			len_of_tab(char **tab);
+t_map		***cpymap(t_map ***new, t_map ***curr, int len);
+char		*getcolor(char *str);
+void *clrmap(t_map ****curr);
 
 #endif
