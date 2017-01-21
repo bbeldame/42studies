@@ -22,13 +22,16 @@ int			len_of_tab(char **tab)
 	return (i);
 }
 
-int			len_of_line(t_map **map)
+int			l_line(t_map **map)
 {
 	int i;
 
 	i = 0;
 	while (map[i])
 		i++;
+	ft_putstr("i = ");
+	ft_putnbr(i);
+	ft_putstr("\n");
 	return (i);
 }
 
@@ -42,11 +45,15 @@ char		*getcolor(char *str)
 	if (!(color = (char *)malloc(sizeof(char) * len + 1)))
 		return (NULL);
 	if (!str)
-		return (BASE_COLOR);
+	{
+		ft_strcpy(color, BASE_COLOR);
+		return (color);
+	}
+	ft_strcpy(color, str);
 	return (color);
 }
 
-t_map		***cpymap(t_map ***new, t_map ***curr, int len)
+int cpymap(t_map ****new, t_map ***curr, int len)
 {
  	int i;
 	int	j;
@@ -56,24 +63,28 @@ t_map		***cpymap(t_map ***new, t_map ***curr, int len)
  	while (i < len)
  	{
 		ft_putstr("cc\n");
-		if (!(new[i] = (t_map **)malloc(sizeof(t_map *) * len_of_line(curr[i]))))
-			return (NULL);
+		if (!((*new)[i] = (t_map **)malloc(sizeof(t_map *) * (l_line(curr[i]) + 1))))
+			return (0);
 		ft_putstr("cc2\n");
  		j = 0;
 		while (curr[i][j])
 		{
-			if (!(new[i][j] = (t_map *)malloc(sizeof(t_map))))
-				return (NULL);
-			new[i][j]->z = curr[i][j]->z;
-			new[i][j]->color = getcolor(curr[i][j]->color);
-			ft_putstr(new[i][j]->color);
+			if (!((*new)[i][j] = (t_map *)malloc(sizeof(t_map))))
+				return (0);
+			(*new)[i][j]->z = curr[i][j]->z;
+			(*new)[i][j]->color = getcolor(curr[i][j]->color);
 			j++;
 		}
-		new[i][j] = NULL;
+		ft_putstr("j = ");
+		ft_putnbr(j);
+		ft_putstr("\n");
+		(*new)[i][j] = NULL;
 		i++;
 	}
-	new[i] = NULL;
-	return (new);
+	ft_putnbr(i);
+	(*new)[i] = NULL;
+	(*new)[i + 1] = NULL;
+	return (1);
 }
 
 void *clrmap(t_map ****curr)
@@ -81,22 +92,30 @@ void *clrmap(t_map ****curr)
 	int i;
 	int j;
 
+	displaytest(*curr);
 	i = 0;
-	while (*curr[i])
+	if ((*curr)[8])
+		ft_putstr("hmm\n");
+	while ((*curr)[i])
 	{
+		ft_putnbr(i);
 		ft_putstr("allo\n");
 		j = 0;
-		while (*curr[i][j])
+		while ((*curr)[i][j])
 		{
-			ft_putstr("blabla\n");
-			free(*curr[i][j]->color);
-			ft_putstr("reblabla\n");
-			free(*curr[i][j]);
-			ft_putstr("rereblabla\n");
+			ft_putstr("j = ");
+			ft_putnbr(j);
+			ft_putstr(" : ");
+			ft_putnbr((*curr)[i][j]->z);
+			ft_putstr("\n");
+			//ft_memdel((void **)&(*curr)[i][j]->color);
+			//ft_memdel((void **)&(*curr)[i][j]);
 			j++;
 		}
+		ft_memdel((void **)&(*curr)[i]);
 		ft_putstr("cc\n");
 		i++;
 	}
+	free(*curr);
 	return (NULL);
 }
