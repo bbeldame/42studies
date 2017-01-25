@@ -98,6 +98,9 @@ t_env		*initenv(int fd)
 		free(str);
 		y++;
 	}
+	e->mlx = mlx_init();
+	e->win = mlx_new_window(e->mlx, WIDTH, HEIGHT, "Fil de fer");
+	e->img_ptr = mlx_new_image(e->mlx, WIDTH, HEIGHT);
 	displaytest(e->map);
 	return (e);
 }

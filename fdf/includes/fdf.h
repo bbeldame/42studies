@@ -22,6 +22,8 @@
 # include "get_next_line.h"
 
 # define BASE_COLOR "0x0000FF"
+# define HEIGHT 1000
+# define WIDTH 1500
 
 typedef struct			s_map
 {
@@ -33,6 +35,8 @@ typedef struct			s_env
 {
 	void				*win;
 	void				*mlx;
+	void				*img_ptr;
+	char				*img;
 	t_map				***map;
 }						t_env;
 
