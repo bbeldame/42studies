@@ -23,6 +23,8 @@
 
 # define BASE_COLOR "0x000000"
 
+# define BUFF_SIZE_FDF 16384
+
 # define HEIGHT 1313
 # define WIDTH 2300
 
@@ -65,10 +67,11 @@ typedef struct			s_cimg
 	int					e;
 }						t_cimg;
 
-typedef struct			s_map
+typedef	struct			s_map
 {
-	int					z;
-	char				*color;
+	int				m_col;
+	int				m_ln;
+	int				**coor;
 }						t_map;
 
 typedef struct			s_env
@@ -78,8 +81,7 @@ typedef struct			s_env
 	void				*img_ptr;
 	char				*img;
 	t_cimg		cimg;
-	t_map				***map;
-	int				test;
+	t_map				*map;
 	t_cam			*cam;
 }						t_env;
 
@@ -92,12 +94,12 @@ typedef struct		s_f_line
 	int					color;
 }									t_f_line;
 
-t_env					*initenv(int fd);
+t_env					*initenv(char *file);
 int						len_of_tab(char **tab);
 int						cpymap(t_map ****new, t_map ***curr, int len);
 char					*getcolor(char *str);
 void					*clrmap(t_map ****curr);
-void					displaytest(t_map ***map);
+void					displaytest(t_map *map);
 int						err_found(char *str);
 void	mlx_fill_image(t_env *e, int color);
 void		put_pxl(t_env *e, int x, int y, int color);
@@ -105,5 +107,6 @@ int		key_hook(int keycode, t_env *e);
 void prnt_line(t_env *e, t_f_line *ln);
 t_f_line *init_line(int color);
 void draw_fdf(t_env *e);
+void	free_splited_str(char **str);
 
 #endif

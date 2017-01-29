@@ -15,13 +15,10 @@
 int			main(int ac, char **av)
 {
 	t_env	*e;
-	int		fd;
 
 	if (ac != 2)
 		exit (err_found("usage : fdf input_map"));
-	if ((fd = open(av[1], O_RDONLY)) == -1)
-		exit (err_found("open failed"));
-	if (!(e = initenv(fd)))
+	if (!(e = initenv(av[1])))
 		exit (err_found("a problem occured during the parsing."));
 	mlx_loop(e->mlx);
 	return (1);
