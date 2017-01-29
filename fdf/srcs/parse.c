@@ -101,6 +101,8 @@ t_env		*initenv(int fd)
 	e->mlx = mlx_init();
 	e->win = mlx_new_window(e->mlx, WIDTH, HEIGHT, "Fil de fer");
 	e->img_ptr = mlx_new_image(e->mlx, WIDTH, HEIGHT);
+	e->img = mlx_get_data_addr(e->img_ptr, &e->cimg.bpp, &e->cimg.sl, &e->cimg.e);
+	mlx_key_hook(e->win, key_hook, e);
 	displaytest(e->map);
 	return (e);
 }

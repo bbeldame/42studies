@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,17 +12,19 @@
 
 #include "../includes/fdf.h"
 
-int			main(int ac, char **av)
+int		key_hook(int keycode, t_env *e)
 {
-	t_env	*e;
-	int		fd;
-
-	if (ac != 2)
-		exit (err_found("usage : fdf input_map"));
-	if ((fd = open(av[1], O_RDONLY)) == -1)
-		exit (err_found("open failed"));
-	if (!(e = initenv(fd)))
-		exit (err_found("a problem occured during the parsing."));
-	mlx_loop(e->mlx);
-	return (1);
+	printf("key = %d\n", keycode);
+	if (keycode == KEY_ESC)
+		exit(1);
+	if (keycode == KEY_F16)
+		mlx_fill_image(e, C_RED);
+	if (keycode == KEY_F17)
+		mlx_fill_image(e, C_ORANGE);
+	if (keycode == KEY_F18)
+		mlx_fill_image(e, C_YELLOW);
+	if (keycode == KEY_F19)
+		mlx_fill_image(e, C_PURPLE);
+	draw_fdf(e);
+	return (0);
 }

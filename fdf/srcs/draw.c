@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,17 +12,37 @@
 
 #include "../includes/fdf.h"
 
-int			main(int ac, char **av)
+void		put_pxl(t_env *e, int x, int y, int color)
 {
-	t_env	*e;
-	int		fd;
+	int		pos;
 
-	if (ac != 2)
-		exit (err_found("usage : fdf input_map"));
-	if ((fd = open(av[1], O_RDONLY)) == -1)
-		exit (err_found("open failed"));
-	if (!(e = initenv(fd)))
-		exit (err_found("a problem occured during the parsing."));
-	mlx_loop(e->mlx);
-	return (1);
+	if (x >= 0 && x < WIDTH && y >= 0 && y < HEIGHT)
+	{
+		pos = (x * e->cimg.bpp / 8) + (y * e->cimg.sl);
+		e->img[pos] = color % 256;
+		e->img[pos + 1] = (color >> 8) % 256;
+		e->img[pos + 2] = (color >> 16) % 256;
+	}
+}
+
+void	mlx_fill_image(t_env *e, int color)
+{
+	int		x;
+	int		y;
+
+	x = -1;
+	while (++x < WIDTH)
+	{
+		y = -1;
+		while (++y < HEIGHT)
+		{
+			put_pxl(e, x, y, color);
+		}
+	}
+}
+
+void draw_fdf(t_env *e)
+{
+
+	mlx_put_image_to_window(e->mlx, e->win, e->img_ptr, 0, 0);
 }

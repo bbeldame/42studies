@@ -18,7 +18,7 @@
 # include <sys/uio.h>
 # include "../libft/libft.h"
 
-# define BUFF_SIZE	9
+# define BUFF_SIZE	4200
 # define NBMAXFD	9000
 
 typedef struct		s_cont
