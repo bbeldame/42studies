@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 19:10:54 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/01/19 20:48:08 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/01/30 19:03:01 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int		get_next_line(const int fd, char **line)
 	char			buffer[BUFF_SIZE + 1];
 	int				ret;
 	static char		*str[NBMAXFD];
+	char			*swap;
 
 	ret = 1;
 	if (!line || fd > NBMAXFD || fd < 0 || BUFF_SIZE < 1)
@@ -99,7 +100,10 @@ int		get_next_line(const int fd, char **line)
 		if ((ret = read(fd, buffer, BUFF_SIZE)) == -1)
 			return (-1);
 		buffer[ret] = '\0';
-		str[fd] = ft_strjoin(str[fd], buffer);
+		swap = ft_strdup(str[fd]);
+		ft_memdel((void **)&str[fd]);
+		str[fd] = ft_strjoin(swap, buffer);
+		ft_memdel((void **)&swap);
 	}
 	return (processline(ret, &str[fd], &line));
 }

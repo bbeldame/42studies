@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 20:00:22 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/01/23 19:39:16 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/01/30 19:56:05 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void		put_pxl(t_env *e, int x, int y, int color)
 	}
 }
 
-void	mlx_fill_image(t_env *e, int color)
+void		mlx_fill_image(t_env *e, int color)
 {
 	int		x;
 	int		y;
@@ -41,8 +41,7 @@ void	mlx_fill_image(t_env *e, int color)
 	}
 }
 
-void draw_fdf(t_env *e)
+void		draw_fdf(t_env *e)
 {
-
 	mlx_put_image_to_window(e->mlx, e->win, e->img_ptr, 0, 0);
 }
