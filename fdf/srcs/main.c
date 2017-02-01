@@ -17,9 +17,9 @@ int			main(int ac, char **av)
 	t_env	*e;
 
 	if (ac != 2)
-		exit(err_found("usage : fdf input_map"));
+		err_found("usage : fdf input_map");
 	if (!(e = initenv(av[1])))
-		exit(err_found("a problem occured during the parsing."));
+		err_found("a problem occured during the parsing.");
 	mlx_loop(e->mlx);
 	return (1);
 }

@@ -6,16 +6,16 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 20:05:41 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/01/30 19:56:57 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/02/01 20:08:53 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
 
-int			err_found(char *str)
+void		err_found(char *str)
 {
 	ft_putendl_fd(str, 2);
-	return (3);
+	exit(3);
 }
 
 void		free_splited_str(char **str)
@@ -24,8 +24,27 @@ void		free_splited_str(char **str)
 
 	i = 0;
 	while (str[i])
-		free(str[i++]);
-	free(str);
+		ft_memdel((void **)&str[i++]);
+	ft_memdel((void **)&str);
+}
+
+void		*semalloc(size_t size)
+{
+	void *new;
+
+	if (!(new = malloc(size)))
+		err_found("malloc failed");
+	return (new);
+}
+
+int			len_of_tab(char **tab)
+{
+	int i;
+
+	i = 0;
+	while (tab[i])
+		i++;
+	return (i);
 }
 
 void		displaytest(t_map *map)
