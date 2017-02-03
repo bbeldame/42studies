@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 19:06:57 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/02/01 20:10:45 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/02/03 20:40:06 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 
 # define HEIGHT 1313
 # define WIDTH 2300
+# define ZMWIDTH e->cam.zm + WIDTH / 2
+# define ZMHEIGHT e->cam.zm + HEIGHT / 2
 
 # define C_WHITE 0xFFFFFF
 # define C_BLUE 0x248A8A
@@ -57,7 +59,7 @@
 
 typedef struct			s_cam
 {
-	int					zoom;
+	int					zm;
 }						t_cam;
 
 typedef struct			s_cimg
@@ -83,7 +85,7 @@ typedef struct			s_env
 	char				*img;
 	t_cimg				cimg;
 	t_map				*map;
-	t_cam				*cam;
+	t_cam				cam;
 }						t_env;
 
 typedef struct			s_f_line
@@ -111,5 +113,7 @@ void					draw_fdf(t_env *e);
 void					free_splited_str(char **str);
 void					displaytest(t_map *map);
 void					*semalloc(size_t size);
+t_f_line				*init_line(int color);
+void					prnt_line(t_env *e, t_f_line *ln);
 
 #endif

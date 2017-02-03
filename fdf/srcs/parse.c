@@ -118,7 +118,7 @@ t_env			*initenv(char *file)
 	e->img_ptr = mlx_new_image(e->mlx, WIDTH, HEIGHT);
 	e->img = mlx_get_data_addr(e->img_ptr, &e->cimg.bpp, &e->cimg.sl,
 		&e->cimg.e);
-	e->cam = NULL;
+	e->cam.zm = 30;
 	mlx_key_hook(e->win, key_hook, e);
 	displaytest(e->map);
 	return (e);

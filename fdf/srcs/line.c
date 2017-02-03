@@ -19,7 +19,7 @@ void		prnt_line_h(t_env *e, t_f_line *ln)
 	x = ln->x1;
 	while (x <= ln->x2)
 	{
-		put_pxl(e->mlx,
+		put_pxl(e,
 			x,
 			ln->y1 + ((ln->y2 - ln->y1) * (x - ln->x1)) / (ln->x2 - ln->x1),
 			ln->color);
@@ -34,7 +34,7 @@ void		prnt_line_v(t_env *e, t_f_line *ln)
 	y = ln->y1;
 	while (y <= ln->y2)
 	{
-		put_pxl(e->mlx,
+		put_pxl(e,
 			ln->x1 + ((ln->x2 - ln->x1) * (y - ln->y1)) / (ln->y2 - ln->y1),
 			y,
 			ln->color);
@@ -56,7 +56,7 @@ void		prnt_line(t_env *e, t_f_line *ln)
 	swaped = 0;
 	if (ln->x1 == ln->x2 && ln->y1 == ln->y2)
 	{
-		put_pxl(e->mlx, ln->x1, ln->y1, ln->color);
+		put_pxl(e, ln->x1, ln->y1, ln->color);
 		return ;
 	}
 	if (ln->x1 > ln->x2)
