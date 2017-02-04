@@ -27,8 +27,14 @@
 
 # define HEIGHT 1313
 # define WIDTH 2300
-# define ZMWIDTH e->cam.zm + WIDTH / 2
-# define ZMHEIGHT e->cam.zm + HEIGHT / 2
+# define NAMEFDF "Fil de fer"
+
+# define ZOOM_DEF 30
+# define X_DEF 50
+# define Y_DEF 20
+# define Z_DEF 50
+
+# define PT e->map->coor[y][x]
 
 # define C_WHITE 0xFFFFFF
 # define C_BLUE 0x248A8A
@@ -39,6 +45,7 @@
 # define C_BLACK 0x000000
 # define C_PURPLE 0x750057
 # define C_PINK 0xDD516B
+# define C_GGREEN 0x00FF00
 
 # define KEY_ESC 53
 # define KEY_F16 106
@@ -51,16 +58,48 @@
 # define KEY_RIGHT 124
 # define KEY_W 13
 # define KEY_A 0
+# define KEY_E 14
 # define KEY_S 1
 # define KEY_D 2
 # define KEY_PU 116
 # define KEY_PD 121
 # define KEY_SB 49
+# define MOUSE_L 1
+# define MOUSE_R 2
+# define MOUSE_U 5
+# define MOUSE_D 4
+
+# define DF double
+
+# define KEYPRESSEVENT 2
+# define KEYPRESSMASK (1L << 0)
+# define KEYRELEVENT 3
+# define KEYRELMASK (1L << 1)
+
+typedef struct			s_point
+{
+		DF		x;
+		DF    y;
+		DF    z;
+}					t_point;
 
 typedef struct			s_cam
 {
-	int					zm;
+	DF					zm;
+	int					colorfdf;
+	int					colorbg;
 }						t_cam;
+
+typedef struct			s_keys
+{
+	int					key_pu;
+	int					key_pd;
+	int					key_e;
+	int					key_left;
+	int					key_right;
+	int					key_up;
+	int					key_down;
+}						t_keys;
 
 typedef struct			s_cimg
 {
@@ -73,8 +112,7 @@ typedef	struct			s_map
 {
 	int					m_col;
 	int					m_ln;
-	int					**coor;
-	char				*str;
+	t_point			**coor;
 }						t_map;
 
 typedef struct			s_env
@@ -86,6 +124,7 @@ typedef struct			s_env
 	t_cimg				cimg;
 	t_map				*map;
 	t_cam				cam;
+	t_keys			keys;
 }						t_env;
 
 typedef struct			s_f_line
@@ -99,14 +138,11 @@ typedef struct			s_f_line
 
 t_env					*initenv(char *file);
 int						len_of_tab(char **tab);
-int						cpymap(t_map ****new, t_map ***curr, int len);
-char					*getcolor(char *str);
-void					*clrmap(t_map ****curr);
 void					displaytest(t_map *map);
 void					err_found(char *str);
 void					mlx_fill_image(t_env *e, int color);
 void					put_pxl(t_env *e, int x, int y, int color);
-int						key_hook(int keycode, t_env *e);
+int						keypress_hook(int keycode, t_env *e);
 void					prnt_line(t_env *e, t_f_line *ln);
 t_f_line				*init_line(int color);
 void					draw_fdf(t_env *e);
@@ -115,5 +151,10 @@ void					displaytest(t_map *map);
 void					*semalloc(size_t size);
 t_f_line				*init_line(int color);
 void					prnt_line(t_env *e, t_f_line *ln);
+int						refresh(t_env *e);
+int						keyrel_hook(int keycode, t_env *e);
+t_keys	init_keys();
+void rot_z(t_env *e, int angle);
+void rot_x(t_env *e, int angle);
 
 #endif

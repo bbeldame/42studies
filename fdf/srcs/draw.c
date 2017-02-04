@@ -36,57 +36,66 @@ void		mlx_fill_image(t_env *e, int color)
 			put_pxl(e, x, y, color);
 }
 
-int			centerit(t_env *e, int x, int height)
+void rot_z(t_env *e, int angle)
 {
-	if (height)
-		return ((x - e->map->m_ln / 2) * ZMHEIGHT);
-	return ((x - e->map->m_col / 2) * ZMWIDTH);
+	int y;
+	int x;
+	DF	rangle;
+	DF	tmp;
+
+	rangle = angle * 0.0174533;
+	y = 0;
+	while (e->map->coor[y])
+	{
+		x = 0;
+		while (x < e->map->m_col)
+		{
+			tmp = PT.x;
+			PT.x = cos(rangle) * PT.x - sin(rangle) * PT.y;
+			PT.y = sin(rangle) * tmp + cos(rangle) * PT.y;
+			x++;
+		}
+		y++;
+	}
 }
 
-void		makeline(t_env *e, int i, int j)
+void rot_x(t_env *e, int angle)
 {
-	t_f_line *line;
+	int y;
+	int x;
+	DF	rangle;
+	DF	tmp;
 
-	line = NULL;
-	if (e->map->coor[i + 1])
+	rangle = angle * 0.0174533;
+	y = 0;
+	while (e->map->coor[y])
 	{
-		line = init_line(C_BLACK);
-		line->x1 = centerit(e, j, 0);
-		line->y1 = centerit(e, i, 1);
-		line->x2 = centerit(e, j, 0);
-		line->y2 = centerit(e, i + 1, 1);
-		prnt_line(e, line);
+		x = 0;
+		while (x < e->map->m_col)
+		{
+			tmp = PT.y;
+			PT.y = cos(rangle) * PT.y - sin(rangle) * PT.z;
+			PT.z = sin(rangle) * tmp + cos(rangle) * PT.z;
+			x++;
+		}
+		y++;
 	}
-	if (j + 1 < e->map->m_col)
-	{
-		if (line)
-			free(line);
-		line = init_line(C_BLACK);
-		line->x1 = centerit(e, j, 0);
-		line->y1 = centerit(e, i, 1);
-		line->x2 = centerit(e, j + 1, 0);
-		line->y2 = centerit(e, i, 1);
-		prnt_line(e, line);
-	}
-	if (line)
-		free(line);
 }
 
 void		draw_fdf(t_env *e)
 {
-	int i;
-	int j;
+	int y;
+	int x;
 
-	i = 0;
-	while (e->map->coor[i])
+	y = 0;
+	while (e->map->coor[y])
 	{
-		j = 0;
-		while (j < e->map->m_col)
+		x = 0;
+		while (x < e->map->m_col)
 		{
-			makeline(e, i, j);
-			j++;
+			put_pxl(e, e->cam.zm * PT.x + WIDTH / 2, e->cam.zm * PT.y + HEIGHT / 2, C_WHITE);
+			x++;
 		}
-		i++;
+		y++;
 	}
-	mlx_put_image_to_window(e->mlx, e->win, e->img_ptr, 0, 0);
 }

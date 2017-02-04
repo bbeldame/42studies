@@ -59,7 +59,7 @@ void		displaytest(t_map *map)
 		j = 0;
 		while (j < map->m_col)
 		{
-			ft_putnbr(map->coor[i][j++]);
+			ft_putnbr(map->coor[i][j++].z);
 			ft_putstr(", ");
 		}
 		i++;
