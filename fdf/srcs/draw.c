@@ -36,66 +36,31 @@ void		mlx_fill_image(t_env *e, int color)
 			put_pxl(e, x, y, color);
 }
 
-void rot_z(t_env *e, int angle)
-{
-	int y;
-	int x;
-	DF	rangle;
-	DF	tmp;
-
-	rangle = angle * 0.0174533;
-	y = 0;
-	while (e->map->coor[y])
-	{
-		x = 0;
-		while (x < e->map->m_col)
-		{
-			tmp = PT.x;
-			PT.x = cos(rangle) * PT.x - sin(rangle) * PT.y;
-			PT.y = sin(rangle) * tmp + cos(rangle) * PT.y;
-			x++;
-		}
-		y++;
-	}
-}
-
-void rot_x(t_env *e, int angle)
-{
-	int y;
-	int x;
-	DF	rangle;
-	DF	tmp;
-
-	rangle = angle * 0.0174533;
-	y = 0;
-	while (e->map->coor[y])
-	{
-		x = 0;
-		while (x < e->map->m_col)
-		{
-			tmp = PT.y;
-			PT.y = cos(rangle) * PT.y - sin(rangle) * PT.z;
-			PT.z = sin(rangle) * tmp + cos(rangle) * PT.z;
-			x++;
-		}
-		y++;
-	}
-}
-
 void		draw_fdf(t_env *e)
 {
 	int y;
 	int x;
 
 	y = 0;
-	while (e->map->coor[y])
+	while (e->map->coor[y + 1])
 	{
 		x = 0;
-		while (x < e->map->m_col)
+		while (x < e->map->m_col - 1)
 		{
-			put_pxl(e, e->cam.zm * PT.x + WIDTH / 2, e->cam.zm * PT.y + HEIGHT / 2, C_WHITE);
+			e->map->ln.x1 = e->cam.zm * PT.x + WIDTH / 2;
+			e->map->ln.y1 = e->cam.zm * PT.y + HEIGHT / 2;
+			e->map->ln.x2 = e->cam.zm * PTNEXTY.x + WIDTH / 2;
+			e->map->ln.y2 = e->cam.zm * PTNEXTY.y + HEIGHT / 2;
+			e->map->ln.color = C_WHITE;
+			prnt_line(e, &e->map->ln);
+			e->map->ln.x2 = e->cam.zm * PTNEXTX.x + WIDTH / 2;
+			e->map->ln.y2 = e->cam.zm * PTNEXTX.y + HEIGHT / 2;
+			prnt_line(e, &e->map->ln);
 			x++;
 		}
+		e->map->ln.x1 = e->cam.zm * PTNEXTY.x + WIDTH / 2;
+		e->map->ln.y1 = e->cam.zm * PTNEXTY.y + HEIGHT / 2;
+		prnt_line(e, &e->map->ln);
 		y++;
 	}
 }

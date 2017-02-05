@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 20:05:41 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/01/30 19:55:37 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/02/05 18:08:09 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,10 @@ void			getsize(char *file, t_map **map, int fd)
 		err_found("close failed");
 }
 
-t_point				*parseline(char *str, int m_col, int m_ln, int linenb)
+t_point			*parseline(char *str, int m_col, int m_ln, int linenb)
 {
 	char	**tab;
-	t_point		*ln;
+	t_point	*ln;
 	int		col;
 	char	**z;
 
@@ -75,7 +75,7 @@ t_point				*parseline(char *str, int m_col, int m_ln, int linenb)
 	while (col < len_of_tab(tab))
 	{
 		z = ft_strsplit(tab[col], ',');
-		ln[col].z = ft_atoi(z[0]);
+		ln[col].z = ft_atoi(z[0]) / Z_REDUCE_DEF;
 		ln[col].x = col - m_col / 2;
 		ln[col].y = linenb - m_ln / 2;
 		free_splited_str(z);

@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 19:06:57 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/02/03 20:40:06 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/02/05 18:12:25 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,16 @@
 # define NAMEFDF "Fil de fer"
 
 # define ZOOM_DEF 30
-# define X_DEF 50
-# define Y_DEF 20
-# define Z_DEF 50
+# define X_DEF 120
+# define Y_DEF 40
+# define Z_DEF 120
+# define Z_REDUCE_DEF 5
+
+# define DEGTORAD 0.0174533
 
 # define PT e->map->coor[y][x]
+# define PTNEXTX e->map->coor[y][x + 1]
+# define PTNEXTY e->map->coor[y + 1][x]
 
 # define C_WHITE 0xFFFFFF
 # define C_BLUE 0x248A8A
@@ -78,10 +83,10 @@
 
 typedef struct			s_point
 {
-		DF		x;
-		DF    y;
-		DF    z;
-}					t_point;
+	DF					x;
+	DF					y;
+	DF					z;
+}						t_point;
 
 typedef struct			s_cam
 {
@@ -108,11 +113,21 @@ typedef struct			s_cimg
 	int					e;
 }						t_cimg;
 
+typedef struct			s_f_line
+{
+	int					x1;
+	int					y1;
+	int					x2;
+	int					y2;
+	int					color;
+}						t_f_line;
+
 typedef	struct			s_map
 {
 	int					m_col;
 	int					m_ln;
-	t_point			**coor;
+	t_f_line			ln;
+	t_point				**coor;
 }						t_map;
 
 typedef struct			s_env
@@ -124,17 +139,8 @@ typedef struct			s_env
 	t_cimg				cimg;
 	t_map				*map;
 	t_cam				cam;
-	t_keys			keys;
+	t_keys				keys;
 }						t_env;
-
-typedef struct			s_f_line
-{
-	int					x1;
-	int					y1;
-	int					x2;
-	int					y2;
-	int					color;
-}						t_f_line;
 
 t_env					*initenv(char *file);
 int						len_of_tab(char **tab);
@@ -153,8 +159,10 @@ t_f_line				*init_line(int color);
 void					prnt_line(t_env *e, t_f_line *ln);
 int						refresh(t_env *e);
 int						keyrel_hook(int keycode, t_env *e);
-t_keys	init_keys();
-void rot_z(t_env *e, int angle);
-void rot_x(t_env *e, int angle);
+t_keys					init_keys();
+void					rot_z(t_env *e, DF angle);
+void					rot_x(t_env *e, DF angle);
+void					rot_y(t_env *e, DF angle);
+void					epileptic(t_env *e);
 
 #endif

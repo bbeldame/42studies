@@ -14,7 +14,7 @@
 
 void		prnt_line_h(t_env *e, t_f_line *ln)
 {
-	int x;
+	DF x;
 
 	x = ln->x1;
 	while (x <= ln->x2)
@@ -29,7 +29,7 @@ void		prnt_line_h(t_env *e, t_f_line *ln)
 
 void		prnt_line_v(t_env *e, t_f_line *ln)
 {
-	int y;
+	DF y;
 
 	y = ln->y1;
 	while (y <= ln->y2)
@@ -65,18 +65,4 @@ void		prnt_line(t_env *e, t_f_line *ln)
 		prnt_line_h(e, ln);
 	else
 		prnt_line_v(e, ln);
-}
-
-t_f_line	*init_line(int color)
-{
-	t_f_line *line;
-
-	if (!(line = (t_f_line*)malloc(sizeof(t_f_line))))
-		return (NULL);
-	line->x1 = 0;
-	line->y1 = 0;
-	line->x2 = 20;
-	line->y2 = 20;
-	line->color = color;
-	return (line);
 }

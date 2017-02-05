@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/15 20:00:22 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/02/03 20:38:52 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/02/05 18:07:24 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,9 @@ void	zoom_img(t_env *e, int keycode, int activation)
 		e->keys.key_pd = activation;
 }
 
-void epileptic(t_env *e)
-{
-	static int epileptic = 0;
-
-	if (epileptic)
-	{
-		epileptic = 0;
-		mlx_fill_image(e, C_BLACK);
-	}
-	else
-	{
-		epileptic = 1;
-		mlx_fill_image(e, C_WHITE);
-	}
-}
-
 int		refresh(t_env *e)
 {
+	printf("Zoom = %f\n", e->cam.zm);
 	mlx_destroy_image(e->mlx, e->img_ptr);
 	e->img_ptr = mlx_new_image(e->mlx, WIDTH, HEIGHT);
 	if (e->keys.key_e)
@@ -47,9 +32,9 @@ int		refresh(t_env *e)
 	if (e->keys.key_pd && e->cam.zm > 0.4)
 		e->cam.zm /= 1.1;
 	if (e->keys.key_left)
-		rot_z(e, -5);
+		rot_y(e, -5);
 	if (e->keys.key_right)
-		rot_z(e, 5);
+		rot_y(e, 5);
 	if (e->keys.key_down)
 		rot_x(e, -5);
 	if (e->keys.key_up)
@@ -96,7 +81,7 @@ int		keyrel_hook(int keycode, t_env *e)
 	return (0);
 }
 
-t_keys	init_keys()
+t_keys	init_keys(void)
 {
 	t_keys new;
 
