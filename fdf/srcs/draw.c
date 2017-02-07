@@ -36,31 +36,52 @@ void		mlx_fill_image(t_env *e, int color)
 			put_pxl(e, x, y, color);
 }
 
-void		draw_fdf(t_env *e)
+void		draw_horizontal(t_env *e)
 {
-	int y;
-	int x;
+	int		x;
+	int		y;
 
 	y = 0;
-	while (e->map->coor[y + 1])
+	while (e->map->coor[y])
 	{
 		x = 0;
 		while (x < e->map->m_col - 1)
 		{
-			e->map->ln.x1 = e->cam.zm * PT.x + WIDTH / 2;
-			e->map->ln.y1 = e->cam.zm * PT.y + HEIGHT / 2;
-			e->map->ln.x2 = e->cam.zm * PTNEXTY.x + WIDTH / 2;
-			e->map->ln.y2 = e->cam.zm * PTNEXTY.y + HEIGHT / 2;
-			e->map->ln.color = C_WHITE;
-			prnt_line(e, &e->map->ln);
-			e->map->ln.x2 = e->cam.zm * PTNEXTX.x + WIDTH / 2;
-			e->map->ln.y2 = e->cam.zm * PTNEXTX.y + HEIGHT / 2;
-			prnt_line(e, &e->map->ln);
+			e->map->ln.x1 = e->cam.zm * PT.x + WIDTHDIV2;
+			e->map->ln.y1 = e->cam.zm * PT.y + HEIGHTDIV2;
+			e->map->ln.x2 = e->cam.zm * PTNEXTX.x + WIDTHDIV2;
+			e->map->ln.y2 = e->cam.zm * PTNEXTX.y + HEIGHTDIV2;
+			prnt_line(e, e->map->ln);
 			x++;
 		}
-		e->map->ln.x1 = e->cam.zm * PTNEXTY.x + WIDTH / 2;
-		e->map->ln.y1 = e->cam.zm * PTNEXTY.y + HEIGHT / 2;
-		prnt_line(e, &e->map->ln);
 		y++;
 	}
+}
+
+void		draw_vertical(t_env *e)
+{
+	int		x;
+	int		y;
+
+	x = 0;
+	while (x < e->map->m_col)
+	{
+		y = 0;
+		while (e->map->coor[y + 1])
+		{
+			e->map->ln.x1 = e->cam.zm * PT.x + WIDTHDIV2;
+			e->map->ln.y1 = e->cam.zm * PT.y + HEIGHTDIV2;
+			e->map->ln.x2 = e->cam.zm * PTNEXTY.x + WIDTHDIV2;
+			e->map->ln.y2 = e->cam.zm * PTNEXTY.y + HEIGHTDIV2;
+			prnt_line(e, e->map->ln);
+			y++;
+		}
+		x++;
+	}
+}
+
+void		draw_fdf(t_env *e)
+{
+	draw_horizontal(e);
+	draw_vertical(e);
 }

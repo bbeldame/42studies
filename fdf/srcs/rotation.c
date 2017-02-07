@@ -74,7 +74,7 @@ void	rot_y(t_env *e, DF angle)
 		{
 			tmp = PT.x;
 			PT.x = cos(rangle) * PT.x + sin(rangle) * PT.z;
-			PT.z = -sin(rangle) * tmp + cos(rangle) * PT.z;
+			PT.z = sin(rangle) * -tmp + cos(rangle) * PT.z;
 			x++;
 		}
 		y++;

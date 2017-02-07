@@ -120,12 +120,11 @@ t_env			*initenv(char *file)
 	e->img_ptr = mlx_new_image(e->mlx, WIDTH, HEIGHT);
 	e->img = mlx_get_data_addr(e->img_ptr, &e->cimg.bpp, &e->cimg.sl,
 		&e->cimg.e);
-	e->cam.zm = ZOOM_DEF;
-	e->cam.colorfdf = C_WHITE;
 	e->keys = init_keys();
 	mlx_hook(e->win, 2, KEYPRESSMASK, keypress_hook, e);
 	mlx_hook(e->win, 3, KEYRELMASK, keyrel_hook, e);
 	mlx_loop_hook(e->mlx, refresh, e);
-	displaytest(e->map);
+	e->cam.zm = ZOOM_DEF;
+	e->map->ln.color = C_WHITE;
 	return (e);
 }

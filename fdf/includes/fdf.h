@@ -27,15 +27,20 @@
 
 # define HEIGHT 1313
 # define WIDTH 2300
+# define HEIGHTDIV2 656.5
+# define WIDTHDIV2 1150
+
 # define NAMEFDF "Fil de fer"
 
 # define ZOOM_DEF 30
-# define X_DEF 120
-# define Y_DEF 40
-# define Z_DEF 120
+# define X_DEF 40
+# define Y_DEF -15
+# define Z_DEF 0
 # define Z_REDUCE_DEF 5
 
 # define DEGTORAD 0.0174533
+
+# define COLORS {0xFF0000, 0x00FF00, 0x0000FF, 0xFFFF00, 0xFF00FF, 0x00FF00}
 
 # define PT e->map->coor[y][x]
 # define PTNEXTX e->map->coor[y][x + 1]
@@ -69,12 +74,8 @@
 # define KEY_PU 116
 # define KEY_PD 121
 # define KEY_SB 49
-# define MOUSE_L 1
-# define MOUSE_R 2
-# define MOUSE_U 5
-# define MOUSE_D 4
 
-# define DF double
+# define DF long double
 
 # define KEYPRESSEVENT 2
 # define KEYPRESSMASK (1L << 0)
@@ -104,6 +105,9 @@ typedef struct			s_keys
 	int					key_right;
 	int					key_up;
 	int					key_down;
+	int					key_a;
+	int					key_d;
+	int					key_w;
 }						t_keys;
 
 typedef struct			s_cimg
@@ -140,6 +144,8 @@ typedef struct			s_env
 	t_map				*map;
 	t_cam				cam;
 	t_keys				keys;
+	int					parsed;
+	char				*file;
 }						t_env;
 
 t_env					*initenv(char *file);
@@ -149,14 +155,13 @@ void					err_found(char *str);
 void					mlx_fill_image(t_env *e, int color);
 void					put_pxl(t_env *e, int x, int y, int color);
 int						keypress_hook(int keycode, t_env *e);
-void					prnt_line(t_env *e, t_f_line *ln);
 t_f_line				*init_line(int color);
 void					draw_fdf(t_env *e);
 void					free_splited_str(char **str);
 void					displaytest(t_map *map);
 void					*semalloc(size_t size);
 t_f_line				*init_line(int color);
-void					prnt_line(t_env *e, t_f_line *ln);
+void					prnt_line(t_env *e, t_f_line ln);
 int						refresh(t_env *e);
 int						keyrel_hook(int keycode, t_env *e);
 t_keys					init_keys();
