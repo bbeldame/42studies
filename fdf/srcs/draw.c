@@ -31,9 +31,10 @@ void		mlx_fill_image(t_env *e, int color)
 	int		y;
 
 	x = -1;
-	while (++x < WIDTH && (y = -1) < 0)
-		while (++y < HEIGHT)
-			put_pxl(e, x, y, color);
+	if (BWMODE)
+		while (++x < WIDTH && (y = -1) < 0)
+			while (++y < HEIGHT)
+				put_pxl(e, x, y, color);
 }
 
 void		draw_horizontal(t_env *e)
@@ -47,10 +48,10 @@ void		draw_horizontal(t_env *e)
 		x = 0;
 		while (x < e->map->m_col - 1)
 		{
-			e->map->ln.x1 = e->cam.zm * PT.x + WIDTHDIV2;
-			e->map->ln.y1 = e->cam.zm * PT.y + HEIGHTDIV2;
-			e->map->ln.x2 = e->cam.zm * PTNEXTX.x + WIDTHDIV2;
-			e->map->ln.y2 = e->cam.zm * PTNEXTX.y + HEIGHTDIV2;
+			e->map->ln.x1 = e->cam.zm * PT.x + WIDTHDIV2 + e->cam.x;
+			e->map->ln.y1 = e->cam.zm * PT.y + HEIGHTDIV2 + e->cam.y;
+			e->map->ln.x2 = e->cam.zm * PTNEXTX.x + WIDTHDIV2 + e->cam.x;
+			e->map->ln.y2 = e->cam.zm * PTNEXTX.y + HEIGHTDIV2 + e->cam.y;
 			prnt_line(e, e->map->ln);
 			x++;
 		}
@@ -69,10 +70,10 @@ void		draw_vertical(t_env *e)
 		y = 0;
 		while (e->map->coor[y + 1])
 		{
-			e->map->ln.x1 = e->cam.zm * PT.x + WIDTHDIV2;
-			e->map->ln.y1 = e->cam.zm * PT.y + HEIGHTDIV2;
-			e->map->ln.x2 = e->cam.zm * PTNEXTY.x + WIDTHDIV2;
-			e->map->ln.y2 = e->cam.zm * PTNEXTY.y + HEIGHTDIV2;
+			e->map->ln.x1 = e->cam.zm * PT.x + WIDTHDIV2 + e->cam.x;
+			e->map->ln.y1 = e->cam.zm * PT.y + HEIGHTDIV2 + e->cam.y;
+			e->map->ln.x2 = e->cam.zm * PTNEXTY.x + WIDTHDIV2 + e->cam.x;
+			e->map->ln.y2 = e->cam.zm * PTNEXTY.y + HEIGHTDIV2 + e->cam.y;
 			prnt_line(e, e->map->ln);
 			y++;
 		}

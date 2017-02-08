@@ -22,6 +22,7 @@
 # include "get_next_line.h"
 
 # define BASE_COLOR "0x000000"
+# define BWMODE 0
 
 # define BUFF_SIZE_FDF 250001
 
@@ -74,6 +75,16 @@
 # define KEY_PU 116
 # define KEY_PD 121
 # define KEY_SB 49
+# define KEY_0 82
+# define KEY_1 83
+# define KEY_2 84
+# define KEY_3 85
+# define KEY_4 86
+# define KEY_5 87
+# define KEY_6 88
+# define KEY_7 89
+# define KEY_8 91
+# define KEY_9 92
 
 # define DF long double
 
@@ -94,6 +105,8 @@ typedef struct			s_cam
 	DF					zm;
 	int					colorfdf;
 	int					colorbg;
+	int					x;
+	int					y;
 }						t_cam;
 
 typedef struct			s_keys
@@ -108,6 +121,14 @@ typedef struct			s_keys
 	int					key_a;
 	int					key_d;
 	int					key_w;
+	int					key_1;
+	int					key_2;
+	int					key_3;
+	int					key_4;
+	int					key_6;
+	int					key_7;
+	int					key_8;
+	int					key_9;
 }						t_keys;
 
 typedef struct			s_cimg
@@ -169,5 +190,11 @@ void					rot_z(t_env *e, DF angle);
 void					rot_x(t_env *e, DF angle);
 void					rot_y(t_env *e, DF angle);
 void					epileptic(t_env *e);
+void					color_changer(t_env *e);
+void					rotation_zoom(t_env *e);
+void					zoom_img(t_env *e, int keycode, int activation);
+void					color_changer(t_env *e);
+void					move_cam(t_env *e, int x, int y);
+void					move_cam_keyhook(t_env *e);
 
 #endif

@@ -20,7 +20,6 @@ int			main(int ac, char **av)
 		err_found("usage : fdf input_map");
 	if (!(e = initenv(av[1])))
 		err_found("a problem occured during the parsing.");
-	mlx_fill_image(e, C_WHITE);
 	rot_x(e, X_DEF);
 	rot_y(e, Y_DEF);
 	rot_z(e, Z_DEF);

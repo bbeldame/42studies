@@ -49,7 +49,7 @@ int			line_swap(t_f_line ln)
 	return (1);
 }
 
-void		test_line(t_env *e, t_f_line ln)
+void		prfnt_line(t_env *e, t_f_line ln)
 {
 	int swaped;
 
@@ -67,7 +67,8 @@ void		test_line(t_env *e, t_f_line ln)
 		prnt_line_v(e, ln);
 }
 
-void	prnt_line(t_env *e, t_f_line ln)
+// not my func
+void		prnt_line(t_env *e, t_f_line ln)
 {
 	double dx;
 	double dy;

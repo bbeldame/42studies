@@ -101,6 +101,7 @@ t_map			*parse(char *file)
 	while (get_next_line(fd, &str))
 	{
 		map->coor[y] = parseline(str, map->m_col, map->m_ln, y);
+		free(str);
 		y++;
 	}
 	map->coor[y] = NULL;
@@ -125,6 +126,8 @@ t_env			*initenv(char *file)
 	mlx_hook(e->win, 3, KEYRELMASK, keyrel_hook, e);
 	mlx_loop_hook(e->mlx, refresh, e);
 	e->cam.zm = ZOOM_DEF;
+	e->cam.x = 0;
+	e->cam.y = 0;
 	e->map->ln.color = C_WHITE;
 	return (e);
 }
