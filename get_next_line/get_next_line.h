@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 19:08:31 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/01/15 18:37:23 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/01/20 20:08:16 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "libft/libft.h"
 
 # define BUFF_SIZE	9
-# define NBMAXFD	10240 
+# define NBMAXFD	10240
 
 int					get_next_line(const int fd, char **line);
 
