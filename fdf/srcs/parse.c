@@ -125,6 +125,7 @@ t_env			*initenv(char *file)
 	mlx_hook(e->win, 2, KEYPRESSMASK, keypress_hook, e);
 	mlx_hook(e->win, 3, KEYRELMASK, keyrel_hook, e);
 	mlx_loop_hook(e->mlx, refresh, e);
+	mlx_expose_hook(e->win, expose_hook, e);
 	e->cam.zm = ZOOM_DEF;
 	e->cam.x = 0;
 	e->cam.y = 0;

@@ -49,7 +49,7 @@ int			line_swap(t_f_line ln)
 	return (1);
 }
 
-void		prfnt_line(t_env *e, t_f_line ln)
+void		prnft_line(t_env *e, t_f_line ln)
 {
 	int swaped;
 

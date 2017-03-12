@@ -6,12 +6,11 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 19:10:54 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/01/30 19:03:01 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/03/12 15:44:04 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/get_next_line.h"
-#include <stdio.h>
 
 int		cs(const char *str)
 {
@@ -101,9 +100,9 @@ int		get_next_line(const int fd, char **line)
 			return (-1);
 		buffer[ret] = '\0';
 		swap = ft_strdup(str[fd]);
-		ft_memdel((void **)&str[fd]);
+		ft_strdel(&str[fd]);
 		str[fd] = ft_strjoin(swap, buffer);
-		ft_memdel((void **)&swap);
+		ft_strdel(&swap);
 	}
 	return (processline(ret, &str[fd], &line));
 }
