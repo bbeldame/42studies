@@ -196,5 +196,6 @@ void					zoom_img(t_env *e, int keycode, int activation);
 void					color_changer(t_env *e);
 void					move_cam(t_env *e, int x, int y);
 void					move_cam_keyhook(t_env *e);
+int						expose_hook(t_env *e);
 
 #endif

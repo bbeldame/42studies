@@ -6,7 +6,7 @@
 #    By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 19:07:01 by bbeldame          #+#    #+#              #
-#    Updated: 2017/03/11 21:06:28 by bbeldame         ###   ########.fr        #
+#    Updated: 2017/03/12 15:46:50 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,20 +15,19 @@ FLAGS = -Wall -Wextra -Werror
 LINKS = -lm -lmlx -framework OpenGL -framework AppKit
 LIBFT = ./libft/libft.a
 OBJDIR = ./obj/
-INCDIR = ./includes/
-SRCDIR = ./srcs/
-SRCS =  $(SRCDIR)bonus.c $(SRCDIR)bonus2.c $(SRCDIR)draw.c \
-		$(SRCDIR)hooks.c $(SRCDIR)main.c \
-	    $(SRCDIR)parse.c $(SRCDIR)rotation.c \
-	    $(SRCDIR)line.c $(SRCDIR)utils.c $(SRCDIR)get_next_line.c
-INCS = $(INCDIR)fdf.h $(INCDIR)get_next_line.h
+INCDIR = ./includes
+SRCDIR = ./srcs
+SRCS_NAME =  bonus.c bonus2.c draw.c hooks.c main.c parse.c rotation.c \
+	    line.c utils.c get_next_line.c
+
+SRCS = $(addprefix $(SRCDIR)/,$(SRCS_NAME))
 
 all: $(NAME)
 
 $(NAME):
 	mkdir -p $(OBJDIR)
 	make -C ./libft
-	gcc $(FLAGS) $(LINKS) $(SRCS) $(LIBFT) -I $(INCS) -o $(NAME)
+	gcc $(FLAGS) $(LINKS) -I $(INCDIR) -o $(NAME) $(SRCS) $(LIBFT)
 clean:
 	rm -rf $(OBJDIR)
 	make clean -C ./libft
