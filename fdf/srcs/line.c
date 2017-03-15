@@ -12,82 +12,58 @@
 
 #include "../includes/fdf.h"
 
-void		prnt_line_h(t_env *e, t_f_line ln)
+static int	inverse_if_needed(t_f_line *ln)
 {
-	DF x;
+	int	inversed;
+
+	inversed = 0;
+	if (abs(ln->x1 - ln->x2) < abs(ln->y1 - ln->y2))
+	{
+		ft_swap(&(ln->x1), &(ln->y1));
+		ft_swap(&(ln->x2), &(ln->y2));
+		inversed = 1;
+	}
+	if (ln->x1 > ln->x2)
+	{
+		ft_swap(&(ln->x1), &(ln->x2));
+		ft_swap(&(ln->y1), &(ln->y2));
+	}
+	return (inversed);
+}
+
+static void	draw_line(t_env *e, t_f_line ln, int inversed, DF dx)
+{
+	DF	x;
+	DF	y;
+	DF	derror2;
+	DF	error2;
 
 	x = ln.x1;
+	y = ln.y1;
+	derror2 = abs(ln.y2 - ln.y1) * 2;
+	error2 = 0;
 	while (x <= ln.x2)
 	{
-		put_pxl(e,
-			x,
-			ln.y1 + ((ln.y2 - ln.y1) * (x - ln.x1)) / (ln.x2 - ln.x1),
-			ln.color);
+		if (inversed)
+			put_pxl(e, y, x, ln.color);
+		else
+			put_pxl(e, x, y, ln.color);
+		error2 += derror2;
+		if (error2 > dx)
+		{
+			y += (ln.y2 > ln.y1 ? 1 : -1);
+			error2 -= dx * 2;
+		}
 		x++;
 	}
 }
 
-void		prnt_line_v(t_env *e, t_f_line ln)
-{
-	DF y;
-
-	y = ln.y1;
-	while (y <= ln.y2)
-	{
-		put_pxl(e,
-			ln.x1 + ((ln.x2 - ln.x1) * (y - ln.y1)) / (ln.y2 - ln.y1),
-			y,
-			ln.color);
-		y++;
-	}
-}
-
-int			line_swap(t_f_line ln)
-{
-	ft_swap(&ln.x1, &ln.x2);
-	ft_swap(&ln.y1, &ln.y2);
-	return (1);
-}
-
-void		prnft_line(t_env *e, t_f_line ln)
-{
-	int swaped;
-
-	swaped = 0;
-	if (ln.x1 == ln.x2 && ln.y1 == ln.y2)
-	{
-		put_pxl(e, ln.x1, ln.y1, ln.color);
-		return ;
-	}
-	if (ln.x1 > ln.x2)
-		swaped = line_swap(ln);
-	if ((ln.x2 - ln.x1) >= (ln.y2 - ln.y1))
-		prnt_line_h(e, ln);
-	else
-		prnt_line_v(e, ln);
-}
-
-// not my func
 void		prnt_line(t_env *e, t_f_line ln)
 {
-	double dx;
-	double dy;
-	double x;
-	double y;
-	double temp;
+	int inversed;
+	DF	dx;
 
-	x = ln.x1;
-	y = ln.y1;
+	inversed = inverse_if_needed(&ln);
 	dx = ln.x2 - ln.x1;
-	dy = ln.y2 - ln.y1;
-	temp = sqrt((dx * dx) + (dy * dy));
-	dx /= temp;
-	dy /= temp;
-	while (temp >= 0)
-	{
-		put_pxl(e, x, y, ln.color);
-		x += dx;
-		y += dy;
-		temp--;
-	}
+	draw_line(e, ln, inversed, dx);
 }
