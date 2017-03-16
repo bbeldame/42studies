@@ -6,7 +6,7 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/19 20:05:41 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/02/01 20:08:53 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/03/16 20:31:42 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,4 @@ int			len_of_tab(char **tab)
 	while (tab[i])
 		i++;
 	return (i);
-}
-
-void		displaytest(t_map *map)
-{
-	int		i;
-	int		j;
-
-	ft_putstr("------------------------DEBUT-----------------------------\n");
-	i = 0;
-	while (i < map->m_ln)
-	{
-		j = 0;
-		while (j < map->m_col)
-		{
-			ft_putnbr(map->coor[i][j++].z);
-			ft_putstr(", ");
-		}
-		i++;
-		ft_putstr("\n");
-	}
-	ft_putstr("-------------------------FIN-------------------------------\n");
 }

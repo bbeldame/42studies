@@ -6,11 +6,15 @@
 /*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/16 20:06:52 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/01/30 19:53:56 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/03/16 20:16:17 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fdf.h"
+
+/*
+** Bresenhams Algorithm
+*/
 
 static int	inverse_if_needed(t_f_line *ln)
 {
