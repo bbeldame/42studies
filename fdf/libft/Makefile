@@ -6,13 +6,19 @@
 #    By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2016/11/12 18:06:34 by bbeldame          #+#    #+#              #
-#    Updated: 2017/03/12 15:50:18 by bbeldame         ###   ########.fr        #
+#    Updated: 2017/03/16 20:50:14 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = gcc
 
 CFLAGS = -c -Wall -Wextra -Werror
+
+GREEN = \033[0;32m
+
+RED = \033[0;31m
+
+NC = \033[0m
 
 NAME =	libft.a
 
@@ -93,12 +99,14 @@ $(NAME):
 	@$(CC) $(CFLAGS) $(SRCS)
 	@$(LIB) $(NAME) $(OBJS)
 	@$(RLIB) $(NAME)
+	@echo "$(GREEN)----------Libft compiled----------$(NC)"
 
 clean:
 	@/bin/rm -f $(OBJS)
 
 fclean:	clean
 	@/bin/rm -f $(NAME)
+	@echo "$(GREEN)-----Libft removed completely-----$(NC)"
 
 re: fclean all
 
