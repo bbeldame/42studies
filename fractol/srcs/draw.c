@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 20:36:21 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/03/17 21:27:24 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/03/19 19:05:47 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,15 +39,15 @@ static void		choose_between_differents_fractols(t_env *e)
 {
 	if (ft_strcmp(e->choice, "mandelbrot") == 0)
 	{
-		draw_mandelbrot(e);
+		draw_mandelbrot(e, 0, 0);
 	}
 	else if (ft_strcmp(e->choice, "julia") == 0)
 	{
-		draw_julia(e);
+		draw_julia(e, 0, 0);
 	}
 	else if (ft_strcmp(e->choice, "burningship") == 0)
 	{
-		draw_burningship(e);
+		draw_burningship(e, 0, 0);
 	}
 }
 

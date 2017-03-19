@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: bbeldame <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 19:20:46 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/03/17 19:21:03 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/03/19 19:13:42 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,9 @@ int			len_of_tab(char **tab)
 	while (tab[i])
 		i++;
 	return (i);
+}
+
+DL			ft_map(DL x, DL size, DL min, DL max)
+{
+	return ((x / size) * (max - min) + min);
 }

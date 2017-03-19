@@ -6,13 +6,13 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 20:55:28 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/03/17 21:22:47 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/03/19 19:06:14 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void        draw_julia(t_env *e)
+void        draw_julia(t_env *e, int x, int y)
 {
     put_pxl(e, 50, 50, 0xFFFFFF);
     refresh(e);

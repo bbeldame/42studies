@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 19:13:57 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/03/17 21:22:18 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/03/19 20:59:03 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,13 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 
-# define HEIGHT 600
+# define MAX_ITER 30
+# define MIN_RANGE -2
+# define MAX_RANGE 2
+# define LIMIT 4
+
+# define HEIGHT 800
 # define WIDTH 800
-# define HEIGHTDIV2 300
-# define WIDTHDIV2 400
 
 # define NAMEWIN "Fractol"
 
@@ -102,6 +105,7 @@ void					err_found(char *str);
 void					*semalloc(size_t size);
 int						len_of_tab(char **tab);
 void					free_splited_str(char **str);
+DL						ft_map(DL x, DL size, DL min, DL max);
 
 /*
 **						Hooks
@@ -118,16 +122,16 @@ void					draw_fractol(t_env *e);
 /*
 **						Mandelbrot
 */
-void					draw_mandelbrot(t_env *e);
+void					draw_mandelbrot(t_env *e, int x, int y);
 
 /*
 **						Julia
 */
-void					draw_julia(t_env *e);
+void					draw_julia(t_env *e, int x, int y);
 
 /*
 **						Burningship
 */
-void					draw_burningship(t_env *e);
+void					draw_burningship(t_env *e, int x, int y);
 
 #endif
