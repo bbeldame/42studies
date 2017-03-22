@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   julia.c                                            :+:      :+:    :+:   */
+/*   camera.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/03/17 20:55:28 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/03/22 20:30:51 by bbeldame         ###   ########.fr       */
+/*   Created: 2017/03/22 19:35:03 by bbeldame          #+#    #+#             */
+/*   Updated: 2017/03/22 20:28:12 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void	draw_julia(t_env *e, int x, int y)
+void	zoom_in(t_env *e, int x, int y)
 {
-	put_pxl(e, 50, 50, 0xFFFFFF);
+	e->cam.zm *= 1.1;
+	refresh(e);
+}
+
+void	zoom_out(t_env *e, int x, int y)
+{
+	e->cam.zm *= 0.9;
 	refresh(e);
 }

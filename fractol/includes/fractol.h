@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 19:13:57 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/03/19 20:59:03 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/03/22 20:29:37 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,23 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 
-# define MAX_ITER 30
 # define MIN_RANGE -2
 # define MAX_RANGE 2
 # define LIMIT 4
+
+# define MANDELBROT 1
+# define JULIA 2
+# define BURNINGSHIP 3
 
 # define HEIGHT 800
 # define WIDTH 800
 
 # define NAMEWIN "Fractol"
 
-# define ZOOM_DEF 30
+# define MAX_ITER_DEF 30
+# define ZOOM_DEF 1
+# define ZOOM e->cam.zm
+# define MAXITER e->cam.max_iter
 
 # define C_WHITE 0xFFFFFF
 # define C_BLUE 0x248A8A
@@ -70,6 +76,12 @@
 # define KEY_7 89
 # define KEY_8 91
 # define KEY_9 92
+# define KEY_PLUS 69
+# define KEY_MINUS 78
+# define BUTTON_LEFT_CLICK 1
+# define BUTTON_RIGHT_CLICK 2
+# define BUTTON_SCROLL_UP 97987 // NE SAIT PAS ENCORE
+# define BUTTON_SCROLL_DOWN 987987 // NE SAIT PAS ENCORE
 
 # define DL long double
 
@@ -79,6 +91,13 @@ typedef struct			s_cam
 	int					x;
 	int					y;
 }						t_cam;
+
+typedef struct			s_settings
+{
+	int					pause;
+	int					max_iter;
+	int					choice;
+}						t_settings;
 
 typedef struct			s_cimg
 {
@@ -93,7 +112,7 @@ typedef	struct			s_env
 	void				*mlx;
 	void				*img_ptr;
 	char				*img;
-	char				*choice;
+	t_settings			stt;
 	t_cimg				cimg;
 	t_cam				cam;
 }						t_env;
@@ -111,13 +130,13 @@ DL						ft_map(DL x, DL size, DL min, DL max);
 **						Hooks
 */
 int						key_hook(int keycode, t_env *e);
+int						mouse_hook(int button, int x, int y, t_env *e);
 
 /*
 **						Draw
 */
 void					refresh(t_env *e);
 void					put_pxl(t_env *e, int x, int y, int color);
-void					draw_fractol(t_env *e);
 
 /*
 **						Mandelbrot
@@ -133,5 +152,11 @@ void					draw_julia(t_env *e, int x, int y);
 **						Burningship
 */
 void					draw_burningship(t_env *e, int x, int y);
+
+/*
+**						Camera
+*/
+void					zoom_in(t_env *e, int x, int y);
+void					zoom_out(t_env *e, int x, int y);
 
 #endif
