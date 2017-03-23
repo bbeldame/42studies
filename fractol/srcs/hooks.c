@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 20:58:27 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/03/22 20:27:47 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/03/23 20:30:24 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		key_hook(int keycode, t_env *e)
 
 int		mouse_hook(int button, int x, int y, t_env *e)
 {
-	printf("button is %d, x is %k, y is %d\n", button, x);
+	printf("button is %d, x is %d, y is %d\n", button, x, y);
 	if (button == BUTTON_LEFT_CLICK || button == BUTTON_SCROLL_UP)
 	{
 		zoom_in(e, x, y);

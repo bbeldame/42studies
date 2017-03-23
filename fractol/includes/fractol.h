@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 19:13:57 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/03/22 20:29:37 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/03/23 21:17:26 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,20 @@
 # define JULIA 2
 # define BURNINGSHIP 3
 
-# define HEIGHT 800
-# define WIDTH 800
+# define BASE_HEIGHT 800
+# define BASE_WIDTH 800
+# define ZOOM_HEIGHT 800 * 1
+# define ZOOM_WIDTH (e->cam.max - e->cam.min)
+
+# define BASE_COOR_X 400
+# define BASE_COOR_Y 400
 
 # define NAMEWIN "Fractol"
 
 # define MAX_ITER_DEF 30
 # define ZOOM_DEF 1
 # define ZOOM e->cam.zm
-# define MAXITER e->cam.max_iter
+# define MAXITER e->stt.max_iter
 
 # define C_WHITE 0xFFFFFF
 # define C_BLUE 0x248A8A
@@ -90,6 +95,10 @@ typedef struct			s_cam
 	DL					zm;
 	int					x;
 	int					y;
+	int					coor_x;
+	int					coor_y;
+	DL					min;
+	DL					max;
 }						t_cam;
 
 typedef struct			s_settings
@@ -137,6 +146,7 @@ int						mouse_hook(int button, int x, int y, t_env *e);
 */
 void					refresh(t_env *e);
 void					put_pxl(t_env *e, int x, int y, int color);
+DL						get_coor(DL x, DL size, t_env *e);
 
 /*
 **						Mandelbrot
