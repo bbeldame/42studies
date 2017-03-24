@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 20:36:21 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/03/23 21:34:43 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/03/24 19:27:04 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,15 @@ void			put_pxl(t_env *e, int x, int y, int color)
 
 DL				get_coor(DL n, DL coor, t_env *e)
 {
-	DL	point;
-	DL preser;
+	DL	temp;
+	DL	preser;
+	DL 	start2 = MIN_RANGE / ZOOM;
+	DL 	stop2 = MAX_RANGE / ZOOM;
 
-	preser = ZOOM_WIDTH;
-	point = ft_map(coor, BASE_WIDTH, MIN_RANGE / ZOOM, MAX_RANGE / ZOOM);
-	e->cam.min = point - (preser / 2);
-	e->cam.max = preser / 2 + point;
-	DL start2 = MIN_RANGE / ZOOM;
-	DL stop2 = MAX_RANGE / ZOOM;
+	temp = (ZOOM_WIDTH) / 2;
+	preser = ft_map(coor, BASE_WIDTH, 0, BASE_WIDTH);
+	e->cam.min = preser - temp;
+	e->cam.max = preser + temp;
 
 	return (((n-e->cam.min)/(e->cam.max-e->cam.min))*(stop2-start2)+start2);
 }
