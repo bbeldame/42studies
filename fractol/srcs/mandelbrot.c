@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 20:33:01 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/03/23 20:45:04 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/03/25 21:05:25 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,21 +44,18 @@ void		draw_mandelbrot(t_env *e, int x, int y)
 	int		color;
 	int		basecolor;
 
-	printf("coor x = %d\n", e->cam.coor_x);
-	printf("coor y = %d\n", e->cam.coor_y);
-	while (x < BASE_WIDTH && (y = 0) != 1)
+	while (x < W && (y = 0) != 1)
 	{
-		while (y < BASE_HEIGHT)
+		while (y < H)
 		{
-			a = get_coor(x, e->cam.coor_x, e);
-			b = get_coor(y, e->cam.coor_y, e);
+			a = ft_map(x, W, e->cam.minx / e->cam.zm, e->cam.maxx / e->cam.zm);
+			b = ft_map(y, H, e->cam.miny / e->cam.zm, e->cam.maxy / e->cam.zm);
 			iteration = mathsequence(a, b, e);
 			basecolor = 0x6A0EB3;
 			color = ft_map(iteration, MAXITER, basecolor << 2, basecolor >> 4);
 			color = ft_map(iteration, MAXITER, color << 2, color >> 8);
-			if (iteration == MAXITER)
-				color = ft_map(x, BASE_WIDTH, 0x8DFF45 << 4, 0xA3FFD3 >> 4);
-			put_pxl(e, x, y, color);
+			if (iteration != MAXITER)
+				put_pxl(e, x, y, color);
 			y++;
 		}
 		x++;

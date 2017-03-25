@@ -6,7 +6,7 @@
 #    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/17 19:16:02 by bbeldame          #+#    #+#              #
-#    Updated: 2017/03/17 20:59:44 by bbeldame         ###   ########.fr        #
+#    Updated: 2017/03/25 20:36:40 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ LIBFT = ./libft/libft.a
 OBJDIR = ./obj/
 INCDIR = ./includes
 SRCDIR = ./srcs
-SRCS_NAME = *.c
+SRCS_NAME = draw.c camera.c main.c utils.c hooks.c \
+		mandelbrot.c julia.c burningship.c
 
 GREEN = \033[0;32m
 RED = \033[0;31m

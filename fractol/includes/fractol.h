@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 19:13:57 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/03/23 21:17:26 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/03/25 19:45:55 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,17 @@
 # include "../libft/libft.h"
 # include <fcntl.h>
 
-# define MIN_RANGE -2
-# define MAX_RANGE 2
 # define LIMIT 4
 
 # define MANDELBROT 1
 # define JULIA 2
 # define BURNINGSHIP 3
 
-# define BASE_HEIGHT 800
-# define BASE_WIDTH 800
-# define ZOOM_HEIGHT 800 * 1
-# define ZOOM_WIDTH (e->cam.max - e->cam.min)
+# define MIN_RANGE_DEF -2
+# define MAX_RANGE_DEF 2
+
+# define H 800
+# define W 800
 
 # define BASE_COOR_X 400
 # define BASE_COOR_Y 400
@@ -85,7 +84,7 @@
 # define KEY_MINUS 78
 # define BUTTON_LEFT_CLICK 1
 # define BUTTON_RIGHT_CLICK 2
-# define BUTTON_SCROLL_UP 97987 // NE SAIT PAS ENCORE
+# define BUTTON_SCROLL_UP 5
 # define BUTTON_SCROLL_DOWN 987987 // NE SAIT PAS ENCORE
 
 # define DL long double
@@ -95,10 +94,12 @@ typedef struct			s_cam
 	DL					zm;
 	int					x;
 	int					y;
+	DL					minx;
+	DL					maxx;
+	DL					miny;
+	DL					maxy;
 	int					coor_x;
 	int					coor_y;
-	DL					min;
-	DL					max;
 }						t_cam;
 
 typedef struct			s_settings
@@ -140,6 +141,7 @@ DL						ft_map(DL x, DL size, DL min, DL max);
 */
 int						key_hook(int keycode, t_env *e);
 int						mouse_hook(int button, int x, int y, t_env *e);
+int						mouse_position(int x, int y, t_env *e);
 
 /*
 **						Draw
