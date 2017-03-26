@@ -6,7 +6,7 @@
 #    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 19:07:01 by bbeldame          #+#    #+#              #
-#    Updated: 2017/03/26 19:39:33 by bbeldame         ###   ########.fr        #
+#    Updated: 2017/03/26 19:57:37 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,6 @@ clean:
 fclean:	clean
 	@rm -f $(NAME)
 	@make fclean -C $(LIBFTDIR)
-	@echo "$(GREEN)----Fractol removed completely----$(NC)"
+	@echo "$(GREEN)------FdF removed completely------$(NC)"
 
 re: fclean all
