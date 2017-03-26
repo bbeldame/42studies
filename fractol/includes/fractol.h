@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 19:13:57 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/03/25 19:45:55 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/03/26 19:33:44 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@
 # define BUTTON_LEFT_CLICK 1
 # define BUTTON_RIGHT_CLICK 2
 # define BUTTON_SCROLL_UP 5
-# define BUTTON_SCROLL_DOWN 987987 // NE SAIT PAS ENCORE
+# define BUTTON_SCROLL_DOWN 4
 
 # define DL long double
 
@@ -134,7 +134,6 @@ void					err_found(char *str);
 void					*semalloc(size_t size);
 int						len_of_tab(char **tab);
 void					free_splited_str(char **str);
-DL						ft_map(DL x, DL size, DL min, DL max);
 
 /*
 **						Hooks
@@ -147,8 +146,6 @@ int						mouse_position(int x, int y, t_env *e);
 **						Draw
 */
 void					refresh(t_env *e);
-void					put_pxl(t_env *e, int x, int y, int color);
-DL						get_coor(DL x, DL size, t_env *e);
 
 /*
 **						Mandelbrot

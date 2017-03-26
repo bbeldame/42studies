@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 20:36:21 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/03/25 20:34:04 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/03/26 18:17:47 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,4 @@ void			refresh(t_env *e)
 	e->img_ptr = mlx_new_image(e->mlx, W, H);
 	choose_between_differents_fractols(e);
 	mlx_put_image_to_window(e->mlx, e->win, e->img_ptr, 0, 0);
-}
-
-void			put_pxl(t_env *e, int x, int y, int color)
-{
-	int		pos;
-
-	if (x >= 0 && x < W && y >= 0 && y < H)
-	{
-		pos = (x * e->cimg.bpp / 8) + (y * e->cimg.sl);
-		e->img[pos] = color % 256;
-		e->img[pos + 1] = (color >> 8) % 256;
-		e->img[pos + 2] = (color >> 16) % 256;
-	}
 }

@@ -6,13 +6,18 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 19:35:03 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/03/25 19:37:15 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/03/26 19:35:10 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-void	zoom_in(t_env *e, int x, int y)
+static DL	ft_map(DL x, DL size, DL min, DL max)
+{
+	return ((x / size) * (max - min) + min);
+}
+
+void		zoom_in(t_env *e, int x, int y)
 {
 	DL xlen;
 	DL ylen;
@@ -30,7 +35,7 @@ void	zoom_in(t_env *e, int x, int y)
 	refresh(e);
 }
 
-void	zoom_out(t_env *e, int x, int y)
+void		zoom_out(t_env *e, int x, int y)
 {
 	DL xlen;
 	DL ylen;

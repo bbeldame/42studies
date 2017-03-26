@@ -6,11 +6,29 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 20:55:28 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/03/25 19:58:45 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/03/26 18:18:12 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+
+static void	put_pxl(t_env *e, int x, int y, int color)
+{
+	int		pos;
+
+	if (x >= 0 && x < W && y >= 0 && y < H)
+	{
+		pos = (x * e->cimg.bpp / 8) + (y * e->cimg.sl);
+		e->img[pos] = color % 256;
+		e->img[pos + 1] = (color >> 8) % 256;
+		e->img[pos + 2] = (color >> 16) % 256;
+	}
+}
+
+static DL	ft_map(DL x, DL size, DL min, DL max)
+{
+	return ((x / size) * (max - min) + min);
+}
 
 static int	mathsequence(DL a, DL b, t_env *e)
 {
