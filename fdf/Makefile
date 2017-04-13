@@ -6,13 +6,15 @@
 #    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/01/16 19:07:01 by bbeldame          #+#    #+#              #
-#    Updated: 2017/03/26 19:57:37 by bbeldame         ###   ########.fr        #
+#    Updated: 2017/04/13 19:49:22 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = fdf
 FLAGS = -Wall -Wextra -Werror
-LINKS = -lm -lmlx -framework OpenGL -framework AppKit
+MLX = ./minilibX/
+MLX_INC	= -I ./miniLibX
+LINKS = -L ./minilibX -lm -lmlx -framework OpenGL -framework AppKit
 LIBFTA = libft.a
 LIBFTDIR = ./libft
 OBJDIR = ./obj/
@@ -35,18 +37,22 @@ obj:
 	@mkdir -p $(OBJDIR)
 
 $(OBJDIR)%.o:$(SRCDIR)%.c
-	@gcc $(FLAGS) -I $(INCDIR) -I $(LIBFTDIR) -o $@ -c $<
+	@gcc $(FLAGS) -I $(INCDIR) -I $(LIBFTDIR) -I $(MLX) -o $@ -c $<
 
 makelibft:
 	@make -C $(LIBFTDIR)
 
-$(NAME): makelibft obj $(OBJS)
+makemlx:
+	@make -sC $(MLX)
+
+$(NAME): makelibft makemlx obj $(OBJS)
 	@gcc $(OBJS) $(LINKS) $(LIBFT) -lm -o $(NAME)
 	@echo "$(GREEN)-----------FdF compiled-----------$(NC)"
 
 clean:
 	@rm -rf $(OBJDIR)
 	@make clean -C $(LIBFTDIR)
+	@make --silent clean -C $(MLX)
 
 fclean:	clean
 	@rm -f $(NAME)
