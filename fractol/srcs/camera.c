@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/22 19:35:03 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/04/27 19:29:18 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/06/05 20:05:21 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,6 @@ void		zoom_out(t_env *e, int x, int y)
 	temp = (e->cam.maxy - e->cam.miny) / 2;
 	e->cam.miny = (ylen - temp);
 	e->cam.maxy = (ylen + temp);
-	e->cam.zm -= 1.1;
+	e->cam.zm -= (e->cam.zm > 1) ? 0.3 : 0;
 	refresh(e);
 }
