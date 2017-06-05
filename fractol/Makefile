@@ -6,11 +6,11 @@
 #    By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/03/17 19:16:02 by bbeldame          #+#    #+#              #
-#    Updated: 2017/03/26 19:31:44 by bbeldame         ###   ########.fr        #
+#    Updated: 2017/06/05 20:16:26 by bbeldame         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fractol
+NAME = ./fractol
 FLAGS = -Wall -Wextra -Werror
 LINKS = -lm -lmlx -framework OpenGL -framework AppKit
 LIBFTA = libft.a
@@ -37,12 +37,15 @@ obj:
 $(OBJDIR)%.o:$(SRCDIR)%.c
 	@gcc $(FLAGS) -I $(INCDIR) -I $(LIBFTDIR) -o $@ -c $<
 
-makelibft:
+$(LIBFT):
 	@make -C $(LIBFTDIR)
 
-$(NAME): makelibft obj $(OBJS)
+$(NAME): $(LIBFT) obj $(OBJS)
 	@gcc $(OBJS) $(LINKS) $(LIBFT) -lm -o $(NAME)
 	@echo "$(GREEN)---------Fractol compiled---------$(NC)"
+
+norme:
+	@norminette includes srcs
 
 clean:
 	@rm -rf $(OBJDIR)
