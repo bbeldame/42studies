@@ -6,7 +6,7 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 19:13:57 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/03/26 19:33:44 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/06/05 20:24:18 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@
 # define KEY_W 13
 # define KEY_A 0
 # define KEY_E 14
+# define KEY_R 15
 # define KEY_S 1
 # define KEY_D 2
 # define KEY_PU 116

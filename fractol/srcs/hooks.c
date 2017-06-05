@@ -6,11 +6,20 @@
 /*   By: bbeldame <bbeldame@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/17 20:58:27 by bbeldame          #+#    #+#             */
-/*   Updated: 2017/03/25 20:19:39 by bbeldame         ###   ########.fr       */
+/*   Updated: 2017/06/05 20:25:06 by bbeldame         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
+
+void	reset(t_env *e)
+{
+	e->cam.zm = ZOOM_DEF;
+	e->cam.minx = MIN_RANGE_DEF;
+	e->cam.maxx = MAX_RANGE_DEF;
+	e->cam.miny = MIN_RANGE_DEF;
+	e->cam.maxy = MAX_RANGE_DEF;
+}
 
 int		key_hook(int keycode, t_env *e)
 {
@@ -26,6 +35,8 @@ int		key_hook(int keycode, t_env *e)
 		zoom_out(e, H / 2, W / 2);
 	if (keycode == KEY_SB)
 		e->stt.pause = (e->stt.pause) ? 0 : 1;
+	if (keycode == KEY_R)
+		reset(e);
 	refresh(e);
 	return (1);
 }
