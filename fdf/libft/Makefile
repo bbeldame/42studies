@@ -89,7 +89,8 @@ SRCS =	ft_putchar.c \
 		ft_min.c \
 		ft_strrev.c \
 		ft_recursive_power.c \
-		ft_swap.c
+		ft_swap.c \
+		get_next_line.c
 
 OBJS =	$(SRCS:.c=.o)
 

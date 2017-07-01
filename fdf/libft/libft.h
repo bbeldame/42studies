@@ -16,6 +16,7 @@
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
+# include "./get_next_line.h"
 
 typedef struct		s_list
 {
@@ -88,5 +89,6 @@ int					ft_recursive_power(int nb, int power);
 char				*ft_strrev(char *str);
 char				*ft_makesentence(const char *str);
 void				ft_swap(int *a, int *b);
+int             	get_next_line(const int fd, char **line);
 
 #endif

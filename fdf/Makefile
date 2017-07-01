@@ -21,7 +21,7 @@ OBJDIR = ./obj/
 INCDIR = ./includes
 SRCDIR = ./srcs/
 SRCS_NAME = bonus.c bonus2.c draw.c hooks.c main.c parse.c rotation.c \
-	    line.c utils.c get_next_line.c
+	    line.c utils.c
 OBJS = $(addprefix $(OBJDIR),$(SRCS_NAME:.c=.o))
 LIBFT = $(addprefix $(LIBFTDIR)/,$(LIBFTA))
 
