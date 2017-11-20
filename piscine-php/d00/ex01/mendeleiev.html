@@ -1,0 +1,667 @@
+<html>
+  <head>
+    <title>Mendeleiev</title>
+    <style>
+      body {
+        background-image: url("https://avante.biz/wp-content/uploads/Breaking-Bad-Wallpapers/Breaking-Bad-Wallpapers-005.jpg");
+        background-repeat: no-repeat;
+        background-color: black;
+        background-attachment: fixed;
+        background-position: 100% 0%;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      caption { font-size: 2.5rem; }
+      tr { height: 5em; }
+      td { width: 5em; padding: 0; position: relative; }
+      .transiMe { background-color: #ecff91DF; }
+      .nonMetal { background-color: #ab91ffDF; }
+      .nobleGas { background-color: #91dfffDF; }
+      .halogene { background-color: #f991ffDF; }
+      .alcalins { background-color: #ffc591DF; }
+      .alcalino { background-color: #ffdf91DF; }
+      .metaloid { background-color: #92ff9fDF; }
+      .otherMet { background-color: #fff991DF; }
+      .unknownM { background-color: #c8c8c8DF; }
+      .lanthani { background-color: #d2ff91DF; }
+      .actinide { background-color: #b8ff91DF; }
+      .weight {
+        font-size: 0.7em;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+      }
+      .symbol {
+        font-size: 1.5em;
+        text-align: center;
+      }
+      .number {
+        font-size: 0.7em;
+        position: absolute;
+        bottom: 0px;
+        left: 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <table>
+      <caption>Tableau des éléments de Mendeleiev</caption>
+      <tr>
+        <td class="nonMetal">
+          <div class="weight">1,00794</div>
+          <div class="symbol">H</div>
+          <div class="number">1</div>
+        </td>
+        <td colspan="16"></td>
+        <td class="nobleGas">
+          <div class="weight">4,002602</div>
+          <div class="symbol">He</div>
+          <div class="number">2</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="alcalins">
+          <div class="weight">6,941</div>
+          <div class="symbol">Li</div>
+          <div class="number">3</div>
+        </td>
+        <td class="alcalino">
+          <div class="weight">9,012182</div>
+          <div class="symbol">Be</div>
+          <div class="number">4</div>
+        </td>
+        <td colspan="10"></td>
+        <td class="metaloid">
+          <div class="weight">10,811</div>
+          <div class="symbol">B</div>
+          <div class="number">5</div>
+        </td>
+        <td class="nonMetal">
+          <div class="weight">12,0107</div>
+          <div class="symbol">C</div>
+          <div class="number">6</div>
+        </td>
+        <td class="nonMetal">
+          <div class="weight">14,0067</div>
+          <div class="symbol">N</div>
+          <div class="number">7</div>
+        </td>
+        <td class="nonMetal">
+          <div class="weight">15,9994</div>
+          <div class="symbol">O</div>
+          <div class="number">8</div>
+        </td>
+        <td class="halogene">
+          <div class="weight">18,998403</div>
+          <div class="symbol">F</div>
+          <div class="number">9</div>
+        </td>
+        <td class="nobleGas">
+          <div class="weight">20,1797</div>
+          <div class="symbol">Ne</div>
+          <div class="number">10</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="alcalins">
+          <div class="weight">22,98976</div>
+          <div class="symbol">Na</div>
+          <div class="number">11</div>
+        </td>
+        <td class="alcalino">
+          <div class="weight">24,3050</div>
+          <div class="symbol">Mg</div>
+          <div class="number">12</div>
+        </td>
+        <td colspan="10"></td>
+        <td class="otherMet">
+          <div class="weight">26,98153</div>
+          <div class="symbol">Al</div>
+          <div class="number">13</div>
+        </td>
+        <td class="metaloid">
+          <div class="weight">28,0855</div>
+          <div class="symbol">Si</div>
+          <div class="number">14</div>
+        </td>
+        <td class="nonMetal">
+          <div class="weight">30,97696</div>
+          <div class="symbol">P</div>
+          <div class="number">15</div>
+        </td>
+        <td class="nonMetal">
+          <div class="weight">32,065</div>
+          <div class="symbol">S</div>
+          <div class="number">16</div>
+        </td>
+        <td class="halogene">
+          <div class="weight">35,453</div>
+          <div class="symbol">Cl</div>
+          <div class="number">17</div>
+        </td>
+        <td class="nobleGas">
+          <div class="weight">39,948</div>
+          <div class="symbol">Ar</div>
+          <div class="number">18</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="alcalins"
+        ><div class="weight">39,0983</div>
+          <div class="symbol">K</div>
+          <div class="number">19</div>
+        </td>
+        <td class="alcalino">
+          <div class="weight">40,078</div>
+          <div class="symbol">Ca</div>
+          <div class="number">20</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">44,95591</div>
+          <div class="symbol">Sc</div>
+          <div class="number">21</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">47,867</div>
+          <div class="symbol">Ti</div>
+          <div class="number">22</div>
+        </td>
+        <td class="transiMe"
+        ><div class="weight">50,9515</div>
+          <div class="symbol">V</div>
+          <div class="number">23</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">51,9962</div>
+          <div class="symbol">Cr</div>
+          <div class="number">24</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">54,93804</div>
+          <div class="symbol">Mn</div>
+          <div class="number">25</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">55,845</div>
+          <div class="symbol">Fe</div>
+          <div class="number">26</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">58,93319</div>
+          <div class="symbol">Co</div>
+          <div class="number">27</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">58,6934</div>
+          <div class="symbol">Ni</div>
+          <div class="number">28</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">63,446</div>
+          <div class="symbol">Cu</div>
+          <div class="number">29</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">64,38</div>
+          <div class="symbol">Zn</div>
+          <div class="number">30</div>
+        </td>
+        <td class="otherMet">
+          <div class="weight">69,723</div>
+          <div class="symbol">Ga</div>
+          <div class="number">31</div>
+        </td>
+        <td class="metaloid">
+          <div class="weight">72,64</div>
+          <div class="symbol">Ge</div>
+          <div class="number">32</div>
+        </td>
+        <td class="metaloid">
+          <div class="weight">74,92160</div>
+          <div class="symbol">As</div>
+          <div class="number">33</div>
+        </td>
+        <td class="nonMetal">
+          <div class="weight">78,96</div>
+          <div class="symbol">Se</div>
+          <div class="number">34</div>
+        </td>
+        <td class="halogene">
+          <div class="weight">79,904</div>
+          <div class="symbol">Br</div>
+          <div class="number">35</div>
+        </td>
+        <td class="nobleGas">
+          <div class="weight">83,798</div>
+          <div class="symbol">Kr</div>
+          <div class="number">36</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="alcalins">
+          <div class="weight">85,4678</div>
+          <div class="symbol">Rb</div>
+          <div class="number">37</div>
+        </td>
+        <td class="alcalino">
+          <div class="weight">87,62</div>
+          <div class="symbol">Sr</div>
+          <div class="number">38</div>
+        </td>
+        <td class="transiMe"
+        ><div class="weight">88,90585</div>
+          <div class="symbol">Y</div>
+          <div class="number">39</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">91,224</div>
+          <div class="symbol">Zr</div>
+          <div class="number">40</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">92,90638</div>
+          <div class="symbol">Nb</div>
+          <div class="number">41</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">95,94</div>
+          <div class="symbol">Mo</div>
+          <div class="number">42</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">97,9072</div>
+          <div class="symbol">Tc</div>
+          <div class="number">43</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">101,07</div>
+          <div class="symbol">Ru</div>
+          <div class="number">44</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">102,90550</div>
+          <div class="symbol">Rh</div>
+          <div class="number">45</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">106,42</div>
+          <div class="symbol">Pd</div>
+          <div class="number">46</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">107,8682</div>
+          <div class="symbol">Ag</div>
+          <div class="number">47</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">112,411</div>
+          <div class="symbol">Cd</div>
+          <div class="number">48</div>
+        </td>
+        <td class="otherMet">
+          <div class="weight">114,818</div>
+          <div class="symbol">In</div>
+          <div class="number">49</div>
+        </td>
+        <td class="otherMet">
+          <div class="weight">118,710</div>
+          <div class="symbol">Sn</div>
+          <div class="number">50</div>
+        </td>
+        <td class="metaloid">
+          <div class="weight">121,760</div>
+          <div class="symbol">Sb</div>
+          <div class="number">51</div>
+        </td>
+        <td class="metaloid">
+          <div class="weight">127,60</div>
+          <div class="symbol">Te</div>
+          <div class="number">52</div>
+        </td>
+        <td class="halogene"
+        ><div class="weight">126,90447</div>
+          <div class="symbol">I</div>
+          <div class="number">53</div>
+        </td>
+        <td class="nobleGas">
+          <div class="weight">131,29</div>
+          <div class="symbol">Xe</div>
+          <div class="number">54</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="alcalins">
+          <div class="weight">132,9054519</div>
+          <div class="symbol">Cs</div>
+          <div class="number">55</div>
+        </td>
+        <td class="alcalino">
+          <div class="weight">137,327</div>
+          <div class="symbol">Ba</div>
+          <div class="number">56</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">174,9668</div>
+          <div class="symbol">Lu</div>
+          <div class="number">71</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">178,49</div>
+          <div class="symbol">Hf</div>
+          <div class="number">72</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">180,94788</div>
+          <div class="symbol">Ta</div>
+          <div class="number">73</div>
+        </td>
+        <td class="transiMe"
+        ><div class="weight">183,84</div>
+          <div class="symbol">W</div>
+          <div class="number">74</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">186,207</div>
+          <div class="symbol">Re</div>
+          <div class="number">75</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">190,23</div>
+          <div class="symbol">Os</div>
+          <div class="number">76</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">192,217</div>
+          <div class="symbol">Ir</div>
+          <div class="number">77</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">195,084</div>
+          <div class="symbol">Pt</div>
+          <div class="number">78</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">196,966569</div>
+          <div class="symbol">Au</div>
+          <div class="number">79</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">200,59</div>
+          <div class="symbol">Hg</div>
+          <div class="number">80</div>
+        </td>
+        <td class="otherMet">
+          <div class="weight">204,3833</div>
+          <div class="symbol">Tl</div>
+          <div class="number">81</div>
+        </td>
+        <td class="otherMet">
+          <div class="weight">207,2</div>
+          <div class="symbol">Pb</div>
+          <div class="number">82</div>
+        </td>
+        <td class="otherMet">
+          <div class="weight">208,98040</div>
+          <div class="symbol">Bi</div>
+          <div class="number">83</div>
+        </td>
+        <td class="metaloid">
+          <div class="weight">208,9824</div>
+          <div class="symbol">Po</div>
+          <div class="number">84</div>
+        </td>
+        <td class="halogene">
+          <div class="weight">209,9871</div>
+          <div class="symbol">At</div>
+          <div class="number">85</div>
+        </td>
+        <td class="nobleGas">
+          <div class="weight">222,0176</div>
+          <div class="symbol">Rn</div>
+          <div class="number">86</div>
+        </td>
+      </tr>
+      <tr>
+        <td class="alcalins">
+          <div class="weight">223,0197</div>
+          <div class="symbol">Fr</div>
+          <div class="number">87</div>
+        </td>
+        <td class="alcalino">
+          <div class="weight">226,0254</div>
+          <div class="symbol">Ra</div>
+          <div class="number">88</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">262</div>
+          <div class="symbol">Lr</div>
+          <div class="number">103</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">263,115</div>
+          <div class="symbol">Rf</div>
+          <div class="number">104</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">262,1144420</div>
+          <div class="symbol">Db</div>
+          <div class="number">105</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">266,1219</div>
+          <div class="symbol">Sg</div>
+          <div class="number">106</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">264,1247</div>
+          <div class="symbol">Bh</div>
+          <div class="number">107</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">269,1341</div>
+          <div class="symbol">Hs</div>
+          <div class="number">108</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">268,1388</div>
+          <div class="symbol">Mt</div>
+          <div class="number">109</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">272,1463</div>
+          <div class="symbol">Ds</div>
+          <div class="number">110</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">272,1535</div>
+          <div class="symbol">Rg</div>
+          <div class="number">111</div>
+        </td>
+        <td class="transiMe">
+          <div class="weight">277</div>
+          <div class="symbol">Cn</div>
+          <div class="number">112</div>
+        </td>
+        <td class="unknownM">
+          <div class="weight">284</div>
+          <div class="symbol">Nh</div>
+          <div class="number">113</div>
+        </td>
+        <td class="unknownM">
+          <div class="weight">289</div>
+          <div class="symbol">Fl</div>
+          <div class="number">114</div>
+        </td>
+        <td class="unknownM">
+          <div class="weight">288</div>
+          <div class="symbol">Mc</div>
+          <div class="number">115</div>
+        </td>
+        <td class="unknownM">
+          <div class="weight">292</div>
+          <div class="symbol">Lv</div>
+          <div class="number">116</div>
+        </td>
+        <td class="unknownM">
+          <div class="weight"></div>
+          <div class="symbol">Ts</div>
+          <div class="number">117</div>
+        </td>
+        <td class="unknownM">
+          <div class="weight">294</div>
+          <div class="symbol">Og</div>
+          <div class="number">118</div>
+        </td>
+      </tr>
+      <tr></tr>
+      <tr>
+        <td colspan="4"></td>
+        <td class="lanthani">
+          <div class="weight">138,9054</div>
+          <div class="symbol">La</div>
+          <div class="number">57</div>
+        </td>
+        <td class="lanthani">
+          <div class="weight">140,116</div>
+          <div class="symbol">Ce</div>
+          <div class="number">58</div>
+        </td>
+        <td class="lanthani">
+          <div class="weight">140,9076</div>
+          <div class="symbol">Pr</div>
+          <div class="number">59</div>
+        </td>
+        <td class="lanthani">
+          <div class="weight">144,242</div>
+          <div class="symbol">Nd</div>
+          <div class="number">60</div>
+        </td>
+        <td class="lanthani">
+          <div class="weight">145</div>
+          <div class="symbol">Pm</div>
+          <div class="number">61</div>
+        </td>
+        <td class="lanthani">
+          <div class="weight">150,36</div>
+          <div class="symbol">Sm</div>
+          <div class="number">62</div>
+        </td>
+        <td class="lanthani">
+          <div class="weight">151,964</div>
+          <div class="symbol">Eu</div>
+          <div class="number">63</div>
+        </td>
+        <td class="lanthani">
+          <div class="weight">157,25</div>
+          <div class="symbol">Gd</div>
+          <div class="number">64</div>
+        </td>
+        <td class="lanthani">
+          <div class="weight">158,9253</div>
+          <div class="symbol">Tb</div>
+          <div class="number">65</div>
+        </td>
+        <td class="lanthani">
+          <div class="weight">162,500</div>
+          <div class="symbol">Dy</div>
+          <div class="number">66</div>
+        </td>
+        <td class="lanthani">
+          <div class="weight">164,9303</div>
+          <div class="symbol">Ho</div>
+          <div class="number">67</div>
+        </td>
+        <td class="lanthani">
+          <div class="weight">167,259</div>
+          <div class="symbol">Er</div>
+          <div class="number">68</div>
+        </td>
+        <td class="lanthani">
+          <div class="weight">168,9342</div>
+          <div class="symbol">Tm</div>
+          <div class="number">69</div>
+        </td>
+        <td class="lanthani">
+          <div class="weight">173,054</div>
+          <div class="symbol">Yb</div>
+          <div class="number">70</div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4"></td>
+        <td class="actinide">
+          <div class="weight">227</div>
+          <div class="symbol">Ac</div>
+          <div class="number">89</div>
+        </td>
+        <td class="actinide">
+          <div class="weight">232,0380</div>
+          <div class="symbol">Th</div>
+          <div class="number">90</div>
+        </td>
+        <td class="actinide">
+          <div class="weight">231,0358</div>
+          <div class="symbol">Pa</div>
+          <div class="number">91</div>
+        </td>
+        <td class="actinide">
+          <div class="weight">238,0289</div>
+          <div class="symbol">U</div>
+          <div class="number">92</div>
+        </td>
+        <td class="actinide">
+          <div class="weight">237</div>
+          <div class="symbol">Np</div>
+          <div class="number">93</div>
+        </td>
+        <td class="actinide">
+          <div class="weight">244</div>
+          <div class="symbol">Pu</div>
+          <div class="number">94</div>
+        </td>
+        <td class="actinide">
+          <div class="weight">243</div>
+          <div class="symbol">Am</div>
+          <div class="number">95</div>
+        </td>
+        <td class="actinide">
+          <div class="weight">247</div>
+          <div class="symbol">Cm</div>
+          <div class="number">96</div>
+        </td>
+        <td class="actinide">
+          <div class="weight">247</div>
+          <div class="symbol">Bk</div>
+          <div class="number">97</div>
+        </td>
+        <td class="actinide">
+          <div class="weight">251</div>
+          <div class="symbol">Cf</div>
+          <div class="number">98</div>
+        </td>
+        <td class="actinide">
+          <div class="weight">252</div>
+          <div class="symbol">Es</div>
+          <div class="number">99</div>
+        </td>
+        <td class="actinide">
+          <div class="weight">257</div>
+          <div class="symbol">Fm</div>
+          <div class="number">100</div>
+        </td>
+        <td class="actinide">
+          <div class="weight">258</div>
+          <div class="symbol">Md</div>
+          <div class="number">101</div>
+        </td>
+        <td class="actinide">
+          <div class="weight">259</div>
+          <div class="symbol">No</div>
+          <div class="number">102</div>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
