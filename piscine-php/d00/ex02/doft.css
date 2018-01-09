@@ -31,7 +31,7 @@ header img {
 .radius {
 	-webkit-border-radius: 10px;
 	-moz-border-radius: 10px;
-	border-radius: 10px;	
+	border-radius: 10px;
 }
 
 header > div {
@@ -97,7 +97,7 @@ header > div {
 	width: 131px;
 	height: 425px;
 	padding-top: 20px;
-	text-align: center; 
+	text-align: center;
 }
 
 #regarder_img {
