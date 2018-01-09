@@ -5,7 +5,10 @@ while (1) {
 	$handle = fopen('php://stdin', 'r');
 	$input = fgets($handle);
 	if (feof($handle) == TRUE)
+	{
+		printf("^D\n");
 		exit();
+	}
 	$input = trim($input);
 	if (is_numeric($input)) {
 		if ($input % 2 == 0) {
