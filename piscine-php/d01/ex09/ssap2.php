@@ -28,7 +28,7 @@
   function ft_get_others($array, $final_array) {
     $to_return = array();
     foreach ($array as $key => $value) {
-      if (!in_array($value, $final_array))
+      if (!in_array($value, $final_array, true))
         $to_return[] = $value;
     }
     return $to_return;
