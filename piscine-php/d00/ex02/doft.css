@@ -1,0 +1,176 @@
+body {
+	background-color: #505050;
+}
+
+#wrapper {
+	padding-top: 10px;
+	width: 1420px;
+	margin: 0 auto;
+	position: relative;
+}
+
+header {
+	background-color: #909090;
+	height: 117px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+header img {
+	margin: 0;
+	height: 100%;
+}
+
+.shadow {
+	-moz-box-shadow: 10px 10px 5px 0px #656565;
+	-webkit-box-shadow: 10px 10px 5px 0px #656565;
+	-o-box-shadow: 10px 10px 5px 0px #656565;
+  box-shadow: 8px 11px 8px 0 #000;
+}
+
+.radius {
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	border-radius: 10px;	
+}
+
+header > div {
+	float: right;
+	position: relative;
+	width: 286px;
+}
+
+#loupe {
+	height: auto;
+	margin-top: 2px;
+}
+
+#reload {
+	float: right;
+	height: auto;
+	margin-right: 10px;
+	width: 17px;
+}
+
+#close {
+	bottom: 31px;
+	height: auto;
+	margin-right: 10px;
+	position: absolute;
+	right: 0;
+	width: 17px;
+}
+
+#content {
+	margin-top: 20px;
+	width: 100%;
+	padding-left: 30px;
+}
+
+#content > div {
+	background-color: #909090;
+	float: left;
+}
+
+.left {
+	width: 105px;
+	padding-left: 35px;
+	height: 385px;
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
+
+.left img {
+	width: 70px;
+	margin-bottom: 10px;
+}
+
+.middle {
+	margin-right: 30px;
+	width: 1020px;
+	margin-left: 30px;
+	padding-bottom: 10px;
+}
+
+.right {
+	padding-left: 10px;
+	width: 131px;
+	height: 425px;
+	padding-top: 20px;
+	text-align: center; 
+}
+
+#regarder_img {
+	border: 5px solid red;
+	border-radius: 10px;
+}
+
+#cluster {
+	width: 1000px;
+	margin-left: 10px;
+	margin-top: 10px;
+}
+
+#book {
+	height: 87px;
+	width: 55px;
+}
+
+#towel {
+	width: 78px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+#brick {
+	background: repeat url('resources/brick.jpg');
+	width: 120px;
+	height: 70px;
+}
+
+#popup {
+	float: left;
+	width: 34%;
+	height: 100%;
+	position: absolute;
+	top: 665px;
+	left: 0.5%;
+	padding-left: 10px;
+	background-color: #88FF89;
+	font-family: Times;
+}
+
+#popup p {
+	font-size: 21px;
+	margin-bottom: 0;
+	margin-top: 0;
+}
+
+b {
+	font-size: 37px;
+}
+
+#txtsha {
+	text-shadow: 7px 7px 5px rgba(255, 77, 49, 1);
+}
+
+.italic {
+	font-size: 20px !important;
+	font-style: italic;
+}
+
+#txt {
+	width: 380px;
+}
+
+#sub {
+	border: medium none;
+	border-radius: 0;
+	font-size: 13px;
+	height: 17px;
+	padding-bottom: 20px;
+	padding-top: 1px;
+	width: 80px;
+	background: #f5f7f6;
+	border: 1px solid #A8A4A5;
+}

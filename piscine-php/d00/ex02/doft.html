@@ -1,0 +1,50 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Day of the 42</title>
+    <link rel="stylesheet" href="doft.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,700' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div id="wrapper">
+        <header class="radius shadow">
+            <img src="resources/day_of_the_42.png" alt="day_of_the_42">
+            <div>
+                <img src="resources/loupe.png" alt="loupe" id="loupe" />
+                <a href="http://www.disney.com"><img src="resources/reload.png" alt="" title="Recommencer au début" id="reload"></a>
+                <a href="http://www.relaischateaux.com" title="Déconnecter"><img src="resources/close.gif" alt="close" id="close"></a>
+            </div>
+        </header>
+        <div id="content">
+            <div class="radius shadow left">
+                <a href="" title="Avancer"><img title="Avancer" src="resources/arrow.png" alt="Avancer"></a>
+                <a href="" title="Prendre"><img title="Prendre" src="resources/main.png" alt="Prendre"></a>
+                <a href="" title="Regarder"><img title="Regarder" id="regarder_img" src="resources/oeil.png" alt="Regarder"></a>
+                <a href="" title="Utiliser"><img title="Utiliser" src="resources/outil.png" alt="Utiliser"></a>
+                <a href="" title="Parler"><img title="Parler" src="resources/chat-icon.png" alt="Parler"></a>
+            </div>
+            <div class="radius shadow middle">
+                <img id="cluster" src="resources/cluster.jpg" alt="cluster" usemap="#Map">
+            </div>
+            <div class="radius shadow right">
+                <img src="resources/book.png" id="book" alt="DontPanic" title="DontPanic" />
+                <br />
+                <img src="resources/towel.png" id="towel" alt="Serviette" title="Serviette" />
+                <div id="brick" title="Brique"></div>
+            </div>
+        </div>
+        <div id="popup" class="radius shadow">
+            <p>Vous <b>entrez</b> alors dans une grande piece remplie d'<span id="txtsha">ordinateurs</span>...</p>
+            <p class="italic">- Bonjour, vous êtes nouveau ici ?</p>
+            <form action="">
+                <input type="text" id="txt">
+                <input id="sub" type="submit" name="repondre" value="Repondre">
+            </form>
+        </div>
+    </div>
+    <map name="Map" id="Map">
+        <area alt="apple" title="" href="http://www.apple.com" shape="rect" coords="790,446,980,325" />
+        <area alt="ikea" title="" href="http://www.ikea.com" title="" shape="rect" coords="323,327,475,561" />
+    </map>
+</body>
+</html>
