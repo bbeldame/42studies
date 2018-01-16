@@ -23,6 +23,8 @@ SELECT * FROM distrib;
 
 SELECT * FROM historique_membre;
 
+SELECT * FROM grille_programme;
+
 /* EXO 01 */
 CREATE TABLE IF NOT EXISTS ft_table (
 	id INT(11) PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -115,6 +117,10 @@ FROM distrib
 WHERE SUBSTRING(telephone, 1, 2) = '05';
 
 /* EXO 16 */
+SELECT COUNT(*) AS 'films'
+FROM historique_membre
+WHERE (date BETWEEN '2006-10-30' AND '2007-07-27')
+OR MONTH(date) = 12 AND DAY(date) = 24;
 
 
 
