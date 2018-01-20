@@ -1,0 +1,90 @@
+<html>
+  <head>
+    <title>Calculatrice</title>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>    
+    <style>
+      body {
+        background-color: pink;
+      }
+      #calculatrice {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
+        border-radius: 420px;
+        background-color: red;
+      }
+      #calculatrice input {
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+        width: 50%;
+      }
+      #calculatrice > :first-child {
+        margin-top: 60px;
+      }
+      #calculatrice select {
+        text-align: center;
+        margin: 0 auto;
+        display: block;
+        width: 50%;
+      }
+    </style>
+    <script>
+      function isPositiveInteger(str) {
+        var n = Math.floor(Number(str));
+        return String(n) === str && n >= 0;
+      }
+
+      function show(display) {
+        console.log(display);
+        alert(display);
+      }
+
+      setInterval(function() { alert("Please, use me..."); }, 30000);
+      function submit() {
+        var left = $("#left").val();
+        var middle = $("#middle option:selected").text();
+        var right = $("#right").val();
+
+        if (isPositiveInteger(left) && isPositiveInteger(right)) {
+          var middleFunc = {
+            "+": function (a, b) { return Number(a) + Number(b); },
+            "-": function (a, b) { return Number(a) - Number(b); },
+            "*": function (a, b) { return Number(a) * Number(b); },
+            "/": function (a, b) {
+              if (Number(right) === 0)
+                return "It's over 9000!";
+              return Number(a) / Number(b);
+              },
+            "%": function (a, b) {
+              if (Number(right) === 0)
+                return "It's over 9000!";
+              return Number(a) % Number(b);
+              }
+          };
+          show(middleFunc[middle](left, right));
+        } else {
+          show("Error :(");
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="calculatrice">
+      <input type="text" name="left" id="left" />
+      <select id="middle">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+        <option value="%">%</option>
+      </select>
+      <input type="text" name="right" id="right" />
+      <input type="submit" onclick="submit()" value="Try me!" id="submit" />
+    </div>
+  </body>
+</html>

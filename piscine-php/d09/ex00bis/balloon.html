@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <title>Balloon</title>
+    <meta charset="utf-8">
+    <script src="https://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <style>
+      body {
+        background-color: pink;
+      }
+      #balloon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
+        border-radius: 420px;
+        background-color: red;
+      }
+    </style>
+    <script>
+      var arrColor = [
+        "red", "green", "blue"
+      ];
+
+      var idxColor = 0;
+
+      function clickBalloon() {
+        var balloon = $("#balloon");
+        var size = balloon.width();
+        if (size < 415) {
+          balloon.width(size + 10 + "px");
+          balloon.height(size + 10 + "px");
+        } else {
+          balloon.width("200px");
+          balloon.height("200px");
+        }
+        idxColor = idxColor === 2 ? 0 : idxColor + 1;
+        balloon.css("background-color", arrColor[idxColor]);
+      }
+
+      function leaveBalloon() {
+        var balloon = $("#balloon");
+        var size = balloon.width();
+        if (size > 200) {
+          balloon.width(size - 5 + "px");
+          balloon.height(size - 5 + "px");
+        }
+        idxColor = idxColor === 0 ? 2 : idxColor - 1;
+        balloon.css("background-color", arrColor[idxColor]);
+      }
+    </script>
+  </head>
+  <body>
+    <div id="balloon" onclick="clickBalloon()" onmouseleave="leaveBalloon()">
+    </div>
+  </body>
+</html>

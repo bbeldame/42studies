@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>Balloon</title>
+    <meta charset="utf-8">
+    <style>
+      body {
+        background-color: pink;
+      }
+      #balloon {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 200px;
+        height: 200px;
+        border-radius: 420px;
+        background-color: red;
+      }
+    </style>
+    <script>
+      var arrColor = [
+        "red", "green", "blue"
+      ];
+
+      var idxColor = 0;
+
+      function clickBalloon() {
+        var balloon = document.getElementById("balloon");
+        var size = balloon.offsetWidth;
+        if (size < 415) {
+          balloon.style.width = size + 10 + "px";
+          balloon.style.height = size + 10 + "px";
+        } else {
+          balloon.style.width = "200px";
+          balloon.style.height = "200px";
+        }
+        idxColor = idxColor === 2 ? 0 : idxColor + 1;
+        balloon.style.background = arrColor[idxColor];
+      }
+
+      function leaveBalloon() {
+        var balloon = document.getElementById("balloon");
+        var size = balloon.offsetWidth;
+        if (size > 200) {
+          balloon.style.width = size - 5 + "px";
+          balloon.style.height = size - 5 + "px";
+        }
+        idxColor = idxColor === 0 ? 2 : idxColor - 1;
+        balloon.style.background = arrColor[idxColor];
+      }
+    </script>
+  </head>
+  <body>
+    <div id="balloon" onclick="clickBalloon()" onmouseleave="leaveBalloon()">
+    </div>
+  </body>
+</html>
