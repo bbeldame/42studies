@@ -1,0 +1,2 @@
+networksetup -getmacaddress wi-fi
+# ifconfig en1 ether

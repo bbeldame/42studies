@@ -1,0 +1,6 @@
+AWS (Amazon), on le voit le faisant un traceroute par exemple
+
+En prenant l'IP du site, trouvé avec le nslookup, on peut ensuite
+faire un nslookup et trouver.
+
+# whois 13.32.182.94
